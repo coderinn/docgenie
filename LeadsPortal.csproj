@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
+    <UserSecretsId>docgenie-development</UserSecretsId>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
@@ -10,27 +11,16 @@
     <None Include="wwwroot\Theme\.DS_Store" />
   </ItemGroup>
 
- <ItemGroup>
-
-    <PackageReference Include="Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter" Version="10.0.12" />
-
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="10.0.12" />
-
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="10.0.2" />
-
-    <PackageReference Include="MySqlConnector" Version="2.6.2" />
-
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-
-    <PackageReference Include="SqlKata" Version="4.0.1" />
-
-    <PackageReference Include="SqlKata.Execution" Version="4.0.1" />
-
-    <PackageReference Include="NuGet.Packaging" Version="6.12.5" />
-
-    <PackageReference Include="NuGet.Protocol" Version="6.12.5" />
-
-</ItemGroup>
+  </ItemGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\Theme\vendor\choices.js\src\" />

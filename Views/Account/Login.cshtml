@@ -1,4 +1,4 @@
-﻿@{
+@{
     Layout = null;
 }
 
@@ -483,6 +483,8 @@
                         <form method="post"
                               asp-controller="Account"
                               asp-action="Login">
+
+                            @Html.ValidationSummary(false, "", new { @class = "alert alert-danger" })
 
 
                             <!-- =================================================

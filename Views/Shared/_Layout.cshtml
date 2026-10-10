@@ -1,0 +1,436 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>
+        @ViewData["Title"] - DocGenie
+    </title>
+
+
+    <!-- =====================================================
+         BOOTSTRAP
+         ===================================================== -->
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+          asp-append-version="true" />
+
+
+    <!-- =====================================================
+         FONT AWESOME
+         ===================================================== -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+
+    <!-- =====================================================
+         GLOBAL SITE CSS
+         ===================================================== -->
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+
+    <!-- =====================================================
+         APPLICATION SHELL
+         ===================================================== -->
+
+    <link rel="stylesheet"
+          href="~/css/app-shell.css"
+          asp-append-version="true" />
+
+
+    <!-- =====================================================
+         PAGE-SPECIFIC CSS
+         ===================================================== -->
+
+    @await RenderSectionAsync("Styles", required: false)
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         APPLICATION SHELL
+         ===================================================== -->
+
+    <div class="app-shell">
+
+
+        <!-- =================================================
+             SIDEBAR
+             ================================================= -->
+
+        <aside class="app-sidebar">
+
+
+            <!-- =============================================
+                 BRAND
+                 ============================================= -->
+
+            <div class="app-sidebar-brand">
+
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   class="app-brand">
+
+                    <span class="app-brand-icon">
+
+                        <i class="fas fa-file-alt"></i>
+
+                    </span>
+
+
+                    <span class="app-brand-name">
+                        DocGenie
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <!-- =============================================
+                 NAVIGATION
+                 ============================================= -->
+
+            <nav class="app-sidebar-nav">
+
+
+                <!-- Workspace -->
+
+                <div class="sidebar-section-title">
+                    Workspace
+                </div>
+
+
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   class="app-nav-link active">
+
+                    <i class="fas fa-th-large"></i>
+
+                    <span>
+                        Dashboard
+                    </span>
+
+                </a>
+
+
+                <a href="#"
+                   class="app-nav-link">
+
+                    <i class="far fa-file-alt"></i>
+
+                    <span>
+                        My Documents
+                    </span>
+
+                </a>
+
+
+                <a href="#"
+                   class="app-nav-link">
+
+                    <i class="fas fa-layer-group"></i>
+
+                    <span>
+                        Templates
+                    </span>
+
+                </a>
+
+
+                <a href="#"
+                   class="app-nav-link">
+
+                    <i class="fas fa-database"></i>
+
+                    <span>
+                        Data Sources
+                    </span>
+
+                </a>
+
+
+                <!-- Management -->
+
+                <div class="sidebar-section-title">
+                    Management
+                </div>
+
+
+                <a href="#"
+                   class="app-nav-link">
+
+                    <i class="fas fa-folder"></i>
+
+                    <span>
+                        Projects
+                    </span>
+
+                </a>
+
+
+                <a href="#"
+                   class="app-nav-link">
+
+                    <i class="fas fa-users"></i>
+
+                    <span>
+                        Team
+                    </span>
+
+                </a>
+
+
+                <a href="#"
+                   class="app-nav-link">
+
+                    <i class="fas fa-credit-card"></i>
+
+                    <span>
+                        Billing
+                    </span>
+
+                </a>
+
+
+                <a href="#"
+                   class="app-nav-link">
+
+                    <i class="fas fa-cog"></i>
+
+                    <span>
+                        Settings
+                    </span>
+
+                </a>
+
+
+            </nav>
+
+
+            <!-- =============================================
+                 USAGE / PLAN
+                 ============================================= -->
+
+            <div class="app-sidebar-bottom">
+
+
+                <div class="sidebar-usage-card">
+
+
+                    <div class="sidebar-usage-header">
+
+                        <span>
+                            Documents Used
+                        </span>
+
+                        <span>
+                            68%
+                        </span>
+
+                    </div>
+
+
+                    <div class="sidebar-usage-bar">
+
+                        <span style="width: 68%;"></span>
+
+                    </div>
+
+
+                    <div class="sidebar-usage-footer">
+
+                        <span>
+                            680 / 1,000
+                        </span>
+
+
+                        <a href="#">
+                            Upgrade Plan
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </aside>
+
+
+        <!-- =================================================
+             MOBILE SIDEBAR OVERLAY
+             ================================================= -->
+
+        <div class="app-sidebar-overlay"></div>
+
+
+        <!-- =================================================
+             MAIN APPLICATION AREA
+             ================================================= -->
+
+        <main class="app-main">
+
+
+            <!-- =============================================
+                 TOPBAR
+                 ============================================= -->
+
+            <header class="app-topbar">
+
+
+                <div class="app-topbar-inner">
+
+
+                    <!-- =====================================
+                         MOBILE MENU
+                         ===================================== -->
+
+                    <button type="button"
+                            class="app-mobile-menu"
+                            aria-label="Open navigation"
+                            aria-expanded="false">
+
+                        <i class="fas fa-bars"></i>
+
+                    </button>
+
+
+                    <!-- =====================================
+                         SEARCH
+                         ===================================== -->
+
+                    <div class="app-search">
+
+                        <i class="fas fa-search"></i>
+
+
+                        <input type="search"
+                               placeholder="Search documents, templates..."
+                               aria-label="Search documents and templates" />
+
+                    </div>
+
+
+                    <!-- =====================================
+                         TOPBAR ACTIONS
+                         ===================================== -->
+
+                    <div class="app-topbar-actions">
+
+
+                        <!-- Notification -->
+
+                        <button type="button"
+                                class="app-topbar-icon"
+                                aria-label="Notifications">
+
+                            <i class="far fa-bell"></i>
+
+                            <span class="notification-dot"></span>
+
+                        </button>
+
+
+                        <!-- User -->
+
+                        <div class="app-user">
+
+
+                            <div class="app-user-avatar">
+                                U
+                            </div>
+
+
+                            <div class="app-user-info">
+
+                                <div class="app-user-name">
+                                    Usman
+                                </div>
+
+                                <div class="app-user-role">
+                                    Business Account
+                                </div>
+
+                            </div>
+
+
+                            <i class="fas fa-chevron-down app-user-chevron"></i>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </header>
+
+
+            <!-- =============================================
+                 PAGE CONTENT
+                 ============================================= -->
+
+            <div class="app-content">
+
+                @RenderBody()
+
+            </div>
+
+
+        </main>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         BOOTSTRAP JS
+         ===================================================== -->
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+            asp-append-version="true"></script>
+
+
+    <!-- =====================================================
+         GLOBAL JS
+         ===================================================== -->
+
+    <script src="~/js/site.js"
+            asp-append-version="true"></script>
+
+
+    <!-- =====================================================
+         PAGE-SPECIFIC JS
+         ===================================================== -->
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+
+</body>
+
+</html>

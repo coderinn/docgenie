@@ -1,0 +1,1327 @@
+﻿/* =========================================================
+   DOCGENIE DASHBOARD
+   =========================================================
+   Dashboard page styling only.
+
+   Global application shell is handled by:
+   app-shell.css
+
+   This file owns:
+   - Dashboard background
+   - Hero
+   - Hero artwork
+   - Creation cards
+   - Popular templates
+   - Recent documents
+   - Dashboard responsive behavior
+   ========================================================= */
+
+
+/* =========================================================
+   DASHBOARD VARIABLES
+   ========================================================= */
+
+.dashboard-page {
+    --dg-blue: #2f8df5;
+    --dg-blue-dark: #2477d8;
+    --dg-blue-soft: #eaf4ff;
+    --dg-purple: #7667ed;
+    --dg-purple-soft: #f0edff;
+    --dg-orange: #f47c32;
+    --dg-orange-soft: #fff0e8;
+    --dg-green: #18ad82;
+    --dg-green-soft: #e5f8f2;
+    --dg-text: #17375e;
+    --dg-text-light: #6683a2;
+    --dg-text-muted: #91a6bc;
+    --dg-border: #e5edf5;
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 72px);
+    overflow: hidden;
+    color: var(--dg-text);
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background: transparent;
+}
+
+
+    /* =========================================================
+   BACKGROUND ATMOSPHERE
+   ========================================================= */
+
+    .dashboard-page::before {
+        content: "";
+        position: absolute;
+        width: 430px;
+        height: 430px;
+        right: -235px;
+        top: 155px;
+        border-radius: 50%;
+        background: radial-gradient( circle, rgba(82, 158, 246, 0.105) 0%, rgba(82, 158, 246, 0.055) 42%, transparent 72% );
+        pointer-events: none;
+        z-index: 0;
+    }
+
+
+    .dashboard-page::after {
+        content: "";
+        position: absolute;
+        left: 38px;
+        top: 12px;
+        width: 70px;
+        height: 70px;
+        background-image: radial-gradient( circle, rgba(72, 153, 242, 0.32) 2px, transparent 2.8px );
+        background-size: 14px 14px;
+        opacity: .58;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+
+/* =========================================================
+   CONTENT WRAPPER
+   ========================================================= */
+
+.dashboard-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 0 34px 42px;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.dashboard-hero {
+    min-height: 225px;
+    position: relative;
+    overflow: visible;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
+.dashboard-hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 780px;
+    padding-top: 91px;
+}
+
+
+.dashboard-hero .eyebrow {
+    margin-bottom: 8px;
+    color: #2f8df5;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+
+.dashboard-hero h1 {
+    margin: 0 0 7px !important;
+    color: #173c69;
+    font-size: clamp( 25px, 2.2vw, 31px );
+    line-height: 1.2;
+    font-weight: 700;
+    letter-spacing: -.55px;
+}
+
+
+.dashboard-hero p {
+    max-width: 760px;
+    margin: 0;
+    color: #718ba5;
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   HERO DOCUMENT ART
+   =========================================================
+   Created with CSS so we don't depend on an image asset.
+   ========================================================= */
+/* =========================================================
+   HERO DOCUMENT ART
+   ========================================================= */
+
+.hero-document-art {
+    position: absolute;
+    right: 42px;
+    top: 18px;
+    width: 430px;
+    height: 275px;
+    display: block;
+    color: transparent;
+    opacity: .88;
+    transform: none;
+    pointer-events: none;
+    z-index: 1;
+}
+
+
+    /* =========================================================
+   REAR / LEFT DOCUMENT
+   ========================================================= */
+
+    .hero-document-art::before {
+        content: "";
+        position: absolute;
+        width: 122px;
+        height: 166px;
+        right: 154px;
+        top: 38px;
+        border: 1px solid rgba(83, 153, 227, .16);
+        border-radius: 8px;
+        background:
+        /* document heading */
+        linear-gradient( rgba(76, 148, 225, .14), rgba(76, 148, 225, .14) ) 28px 46px / 55px 4px no-repeat,
+        /* document lines */
+        linear-gradient( rgba(76, 148, 225, .10), rgba(76, 148, 225, .10) ) 28px 59px / 66px 3px no-repeat, linear-gradient( rgba(76, 148, 225, .08), rgba(76, 148, 225, .08) ) 28px 70px / 57px 3px no-repeat, linear-gradient( rgba(76, 148, 225, .065), rgba(76, 148, 225, .065) ) 28px 81px / 68px 3px no-repeat,
+        /* glass paper */
+        linear-gradient( 145deg, rgba(255, 255, 255, .70) 0%, rgba(225, 241, 255, .48) 100% );
+        box-shadow: 0 18px 38px rgba(54, 126, 207, .055);
+        transform: rotate(-13deg);
+    }
+
+
+    /* =========================================================
+   FRONT / CENTER DOCUMENT
+   ========================================================= */
+
+    .hero-document-art::after {
+        content: "";
+        position: absolute;
+        width: 132px;
+        height: 178px;
+        right: 91px;
+        top: 45px;
+        border: 1px solid rgba(76, 149, 226, .20);
+        border-radius: 8px;
+        background:
+        /* heading */
+        linear-gradient( rgba(70, 143, 223, .20), rgba(70, 143, 223, .20) ) 29px 54px / 60px 4px no-repeat,
+        /* line 1 */
+        linear-gradient( rgba(70, 143, 223, .13), rgba(70, 143, 223, .13) ) 29px 68px / 76px 3px no-repeat,
+        /* line 2 */
+        linear-gradient( rgba(70, 143, 223, .11), rgba(70, 143, 223, .11) ) 29px 79px / 68px 3px no-repeat,
+        /* line 3 */
+        linear-gradient( rgba(70, 143, 223, .085), rgba(70, 143, 223, .085) ) 29px 90px / 77px 3px no-repeat,
+        /* line 4 */
+        linear-gradient( rgba(70, 143, 223, .065), rgba(70, 143, 223, .065) ) 29px 101px / 59px 3px no-repeat,
+        /* glass paper */
+        linear-gradient( 145deg, rgba(255, 255, 255, .88) 0%, rgba(229, 243, 255, .58) 100% );
+        box-shadow: 0 22px 45px rgba(53, 126, 208, .085);
+        transform: rotate(10deg);
+    }
+
+
+    /* =========================================================
+   THIRD / RIGHT DOCUMENT
+   ========================================================= */
+
+    .hero-document-art i {
+        display: block !important;
+        position: absolute;
+        right: 48px;
+        top: 58px;
+        width: 112px;
+        height: 154px;
+        border: 1px solid rgba(100, 164, 225, .14);
+        border-radius: 7px;
+        color: transparent;
+        background:
+        /* heading */
+        linear-gradient( rgba(74, 145, 222, .12), rgba(74, 145, 222, .12) ) 24px 42px / 50px 3px no-repeat,
+        /* lines */
+        linear-gradient( rgba(74, 145, 222, .09), rgba(74, 145, 222, .09) ) 24px 53px / 61px 3px no-repeat, linear-gradient( rgba(74, 145, 222, .07), rgba(74, 145, 222, .07) ) 24px 64px / 52px 3px no-repeat, linear-gradient( rgba(74, 145, 222, .055), rgba(74, 145, 222, .055) ) 24px 75px / 64px 3px no-repeat,
+        /* glass paper */
+        linear-gradient( 145deg, rgba(255, 255, 255, .62) 0%, rgba(219, 238, 255, .34) 100% );
+        box-shadow: 0 18px 38px rgba(58, 132, 211, .055);
+        transform: rotate(18deg);
+        font-size: 0;
+    }
+
+
+        /* =========================================================
+   THIRD DOCUMENT — REMOVE FONT AWESOME ICON
+   ========================================================= */
+
+        .hero-document-art i > * {
+            display: none !important;
+        }
+
+
+ 
+
+        /* =========================================================
+   FLOATING DOCUMENT — REFERENCE STYLE
+   ========================================================= */
+
+        .hero-document-art i::after {
+            content: "";
+            position: absolute;
+            right: -14px;
+            bottom: -3px;
+            width: 47px;
+            height: 50px;
+            display: block;
+            /*
+       Actual document silhouette with folded corner.
+    */
+            clip-path: polygon( 0 0, 68% 0, 100% 30%, 100% 100%, 12% 100%, 0 88% );
+            border-radius: 6px;
+            background:
+            /* ---------------------------------------------
+           White document lines
+           --------------------------------------------- */
+            linear-gradient( rgba(255, 255, 255, .90), rgba(255, 255, 255, .90) ) 13px 20px / 19px 3px no-repeat, linear-gradient( rgba(255, 255, 255, .76), rgba(255, 255, 255, .76) ) 13px 27px / 19px 3px no-repeat, linear-gradient( rgba(255, 255, 255, .66), rgba(255, 255, 255, .66) ) 13px 34px / 15px 3px no-repeat,
+            /* ---------------------------------------------
+           Blue document body
+           --------------------------------------------- */
+            linear-gradient( 145deg, #73b9f7 0%, #62aaf1 48%, #559bea 100% );
+            box-shadow: 0 9px 20px rgba(67, 151, 232, .14);
+            transform: rotate(-7deg);
+        }
+
+
+        /* =========================================================
+   THIRD DOCUMENT — VERY SOFT HIGHLIGHT
+   ========================================================= */
+
+        .hero-document-art i::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 7px;
+            background: linear-gradient( 115deg, rgba(255,255,255,.18), transparent 42% );
+            pointer-events: none;
+        }
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1199.98px) {
+
+    .hero-document-art {
+        right: 10px;
+        opacity: .76;
+        transform: scale(.92);
+        transform-origin: top right;
+    }
+}
+
+
+@media (max-width: 991.98px) {
+
+    .hero-document-art {
+        display: none;
+    }
+}
+
+/* =========================================================
+   ORBITAL LINES
+   ========================================================= */
+
+.dashboard-hero::before {
+    content: "";
+    position: absolute;
+    right: -4px;
+    top: -66px;
+    width: 405px;
+    height: 255px;
+    border: 1px dashed rgba(79, 151, 239, .13);
+    border-radius: 50%;
+    transform: rotate(-14deg);
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+.dashboard-hero::after {
+    content: "";
+    position: absolute;
+    right: 48px;
+    top: -20px;
+    width: 345px;
+    height: 220px;
+    border: 1px solid rgba(79, 151, 239, .065);
+    border-radius: 50%;
+    transform: rotate(21deg);
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* =========================================================
+   CREATE DOCUMENT SECTION
+   ========================================================= */
+
+.dashboard-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+
+
+.dashboard-section-heading {
+    min-width: 0;
+}
+
+
+.dashboard-section-title {
+    margin: 0;
+    color: #173b62;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -.2px;
+    line-height: 1.3;
+}
+
+
+.dashboard-section-subtitle {
+    margin-top: 4px;
+    color: #7893ae;
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+.dashboard-section-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex: 0 0 auto;
+    color: var(--dg-blue);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color .18s ease;
+}
+
+
+    .dashboard-section-link:hover {
+        color: var(--dg-blue-dark);
+        text-decoration: none;
+    }
+
+
+    .dashboard-section-link i {
+        font-size: 9px;
+        transition: transform .18s ease;
+    }
+
+
+    .dashboard-section-link:hover i {
+        transform: translateX(2px);
+    }
+
+
+/* =========================================================
+   CREATION CARDS — MORE PROMINENT
+   ========================================================= */
+/* =========================================================
+   CREATION CARDS — GLOSSY WHITE
+   ========================================================= */
+
+.creation-card {
+    min-height: 230px;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, .92) !important;
+    border-radius: 18px !important;
+    background: linear-gradient( 145deg, rgba(255, 255, 255, .99) 0%, rgba(255, 255, 255, .96) 45%, rgba(247, 251, 255, .94) 100% );
+    box-shadow: 0 12px 30px rgba(55, 91, 125, .075), 0 2px 7px rgba(55, 91, 125, .035), inset 0 1px 0 rgba(255, 255, 255, .95);
+    overflow: hidden;
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+
+
+    /* =========================================================
+   GLOSSY TOP REFLECTION
+   ========================================================= */
+
+    .creation-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 48%;
+        background: linear-gradient( 180deg, rgba(255, 255, 255, .72) 0%, rgba(255, 255, 255, .30) 45%, rgba(255, 255, 255, 0) 100% );
+        pointer-events: none;
+        z-index: 0;
+    }
+
+
+    /* =========================================================
+   VERY SUBTLE LIGHT SPOT
+   ========================================================= */
+
+    .creation-card::after {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -80px;
+        width: 230px;
+        height: 180px;
+        border-radius: 50%;
+        background: radial-gradient( circle, rgba(255, 255, 255, .72) 0%, rgba(255, 255, 255, .25) 45%, transparent 72% );
+        pointer-events: none;
+        z-index: 0;
+    }
+
+
+    /* =========================================================
+   KEEP CARD CONTENT ABOVE GLOSS
+   ========================================================= */
+
+    .creation-card > * {
+        position: relative;
+        z-index: 1;
+    }
+
+
+    /* =========================================================
+   HOVER
+   ========================================================= */
+
+    .creation-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(255, 255, 255, 1) !important;
+        box-shadow: 0 17px 36px rgba(55, 91, 125, .10), 0 3px 9px rgba(55, 91, 125, .045), inset 0 1px 0 rgba(255, 255, 255, 1);
+    }
+
+
+
+/* =========================================================
+   CREATION ICONS
+   ========================================================= */
+
+.creation-icon {
+    position:relative;
+    overflow:hidden;
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, .82) !important;
+    box-shadow: 0 10px 28px rgba(42, 79, 112, .07), inset 0 1px 0 rgba(255, 255, 255, .95), inset 1px 0 0 rgba(255, 255, 255, .55);
+    border-radius: 13px;
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   CREATION ICON — BRIGHTER ACCENT COLORS
+   ========================================================= */
+
+/* Certificate */
+.creation-icon-blue {
+    color: #1687f3;
+    background: #e6f2ff;
+}
+
+
+/* Letter */
+.creation-icon-purple {
+    color: #7058f0;
+    background: #eeeaff;
+}
+
+
+/* Invoice */
+.creation-icon-orange {
+    color: #f47a28;
+    background: #fff0e5;
+}
+
+
+/* Start from Scratch */
+.creation-icon-green {
+    color: #13ad82;
+    background: #e3f8f1;
+}
+
+.creation-icon i {
+    opacity: 1;
+    filter: saturate(1.15);
+}
+
+/* =========================================================
+   MODERN ACCENT UNDER ICON
+   ========================================================= */
+
+/* Large soft semi-circle */
+
+.creation-card::before {
+    content: "";
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    top: -115px;
+    right: -105px;
+    border-radius: 50%;
+    background: radial-gradient( circle, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.58) 38%, rgba(255, 255, 255, 0.20) 62%, rgba(255, 255, 255, 0) 76% );
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* Very subtle curved edge */
+
+.creation-card::after {
+    content: "";
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    top: -108px;
+    right: -98px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* Keep card content above the effect */
+
+.creation-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* =========================================================
+   CREATION CARD TYPOGRAPHY
+   ========================================================= */
+
+.creation-card h3 {
+    margin: 0 0 7px !important;
+    color: #173b62;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: -.15px;
+    line-height: 1.3;
+}
+
+
+.creation-card p {
+    margin: 0 0 18px !important;
+    color: #7892ad;
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   CREATE BUTTON
+   ========================================================= */
+
+
+.creation-card .btn-create {
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .62);
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 3px 10px rgba(60, 95, 125, .035);
+    transition: color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+
+
+/* =========================================================
+   CERTIFICATE — BLUE
+   ========================================================= */
+
+.creation-card:nth-child(1) .btn-create {
+    color: #318df5;
+    border-color: rgba(49, 141, 245, .42);
+}
+
+
+/* =========================================================
+   LETTER — PURPLE
+   ========================================================= */
+
+.creation-card:nth-child(2) .btn-create {
+    color: #7667ed;
+    border-color: rgba(118, 103, 237, .40);
+}
+
+
+/* =========================================================
+   INVOICE — ORANGE
+   ========================================================= */
+
+.creation-card:nth-child(3) .btn-create {
+    color: #f47c32;
+    border-color: rgba(244, 124, 50, .42);
+}
+
+
+/* =========================================================
+   START FROM SCRATCH — GREEN
+   ========================================================= */
+
+.creation-card:nth-child(4) .btn-create {
+    color: #18ad82;
+    border-color: rgba(24, 173, 130, .40);
+}
+
+
+/* =========================================================
+   HOVER — SAME ACCENT BECOMES FILL
+   ========================================================= */
+
+.creation-card:nth-child(1) .btn-create:hover {
+    color: #ffffff;
+    background: #318df5;
+    border-color: #318df5;
+    box-shadow: 0 7px 16px rgba(49, 141, 245, .16);
+    transform: translateY(-1px);
+}
+
+
+.creation-card:nth-child(2) .btn-create:hover {
+    color: #ffffff;
+    background: #7667ed;
+    border-color: #7667ed;
+    box-shadow: 0 7px 16px rgba(118, 103, 237, .16);
+    transform: translateY(-1px);
+}
+
+
+.creation-card:nth-child(3) .btn-create:hover {
+    color: #ffffff;
+    background: #f47c32;
+    border-color: #f47c32;
+    box-shadow: 0 7px 16px rgba(244, 124, 50, .16);
+    transform: translateY(-1px);
+}
+
+
+.creation-card:nth-child(4) .btn-create:hover {
+    color: #ffffff;
+    background: #18ad82;
+    border-color: #18ad82;
+    box-shadow: 0 7px 16px rgba(24, 173, 130, .16);
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   FOCUS
+   ========================================================= */
+
+.creation-card .btn-create:focus-visible {
+    outline: 2px solid rgba(80, 150, 225, .22);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   POPULAR TEMPLATES
+   ========================================================= */
+
+.templates-section {
+    position: relative;
+}
+
+
+.template-card {
+    min-height: 105px;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(224, 233, 241, .82);
+    border-radius: 11px;
+    background: rgba(255, 255, 255, .67);
+    text-decoration: none;
+    transition: transform .18s ease, border-color .18s ease, background-color .18s ease, box-shadow .18s ease;
+}
+
+
+    .template-card:hover {
+        transform: translateY(-2px);
+        border-color: #d3e4f3;
+        background: rgba(255, 255, 255, .92);
+        box-shadow: 0 7px 17px rgba(46, 88, 125, .06);
+        text-decoration: none;
+    }
+
+
+/* =========================================================
+   TEMPLATE PREVIEW
+   ========================================================= */
+
+.template-preview {
+    width: 76px;
+    height: 72px;
+    flex: 0 0 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid #dbe7f1;
+    border-radius: 7px;
+    background: #f9fbfd;
+    box-shadow: 0 2px 6px rgba(48, 80, 110, .035);
+}
+
+
+    .template-preview img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+
+
+.template-card-title {
+    color: #4e6a86;
+    font-size: 12px;
+    font-weight: 650;
+    line-height: 1.35;
+}
+
+
+.template-card-type {
+    margin-top: 3px;
+    color: #9aadc0;
+    font-size: 11px;
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   RECENT DOCUMENTS
+   ========================================================= */
+
+.recent-documents {
+    border: 1px solid rgba(226, 235, 243, .90) !important;
+    border-radius: 15px !important;
+    background: rgba(255, 255, 255, .90);
+    box-shadow: 0 7px 24px rgba(38, 72, 105, .045) !important;
+    overflow: hidden;
+}
+
+
+    .recent-documents .table {
+        margin-bottom: 0;
+    }
+
+
+        /* =========================================================
+   TABLE HEADER
+   ========================================================= */
+
+        .recent-documents .table thead th {
+            padding-top: 11px;
+            padding-bottom: 11px;
+            color: #91a5b8;
+            background: rgba(248, 250, 252, .78);
+            border-bottom: 1px solid #e6edf4;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: .08em;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+
+
+        /* =========================================================
+   TABLE BODY
+   ========================================================= */
+
+        .recent-documents .table tbody td {
+            padding-top: 13px;
+            padding-bottom: 13px;
+            color: #68829e;
+            border-color: #edf2f6;
+            font-size: 12px;
+            vertical-align: middle;
+        }
+
+
+        .recent-documents .table tbody tr {
+            transition: background-color .16s ease;
+        }
+
+
+            .recent-documents .table tbody tr:hover {
+                background: #fbfdff;
+            }
+
+
+            .recent-documents .table tbody tr:last-child td {
+                border-bottom: 0;
+            }
+
+
+    /* =========================================================
+   DOCUMENT NAME
+   ========================================================= */
+
+    .recent-documents .document-name {
+        color: #183b61;
+        font-size: 12px;
+        font-weight: 650;
+        line-height: 1.35;
+    }
+
+
+/* =========================================================
+   DOCUMENT TYPE ICON
+   ========================================================= */
+
+.document-type-icon {
+    width: 34px;
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 9px;
+    font-size: 13px;
+}
+
+
+.document-type-certificate {
+    color: #318df5;
+    background: #eaf4ff;
+}
+
+
+.document-type-letter {
+    color: #7667ed;
+    background: #f0edff;
+}
+
+
+.document-type-invoice {
+    color: #f47c32;
+    background: #fff0e8;
+}
+
+
+/* =========================================================
+   STATUS
+   ========================================================= */
+
+.status-completed {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 999px;
+    color: #15956f;
+    background: #def7ed;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+
+/* =========================================================
+   DOCUMENT ACTION
+   ========================================================= */
+
+.document-action {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 9px;
+    color: #6d879f;
+    background: #f3f7fb;
+    cursor: pointer;
+    transition: color .18s ease, background-color .18s ease, transform .18s ease;
+}
+
+
+    .document-action:hover {
+        color: var(--dg-blue);
+        background: var(--dg-blue-soft);
+        transform: translateY(-1px);
+    }
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.dashboard-empty-state {
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    text-align: center;
+}
+
+
+.dashboard-empty-state-icon {
+    width: 48px;
+    height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    border-radius: 13px;
+    color: #6d9ed0;
+    background: #eef6fd;
+    font-size: 18px;
+}
+
+
+.dashboard-empty-state-title {
+    margin-bottom: 5px;
+    color: #365a7d;
+    font-size: 14px;
+    font-weight: 650;
+}
+
+
+.dashboard-empty-state-text {
+    max-width: 390px;
+    margin: 0;
+    color: #8aa0b6;
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   RESPONSIVE — 1399px
+   ========================================================= */
+
+@media (max-width: 1399.98px) {
+
+    .dashboard-content {
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+
+
+    .hero-document-art {
+        right: 25px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 1199px
+   ========================================================= */
+
+@media (max-width: 1199.98px) {
+
+    .dashboard-content {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+
+    .hero-document-art {
+        right: 5px;
+        opacity: .075;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 991px
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+    .dashboard-content {
+        padding-left: 22px;
+        padding-right: 22px;
+    }
+
+
+    .dashboard-hero {
+        min-height: 205px;
+    }
+
+
+        .dashboard-hero h1 {
+            font-size: 29px;
+        }
+
+
+    .hero-document-art {
+        display: none;
+    }
+
+
+    .dashboard-hero::before,
+    .dashboard-hero::after {
+        display: none;
+    }
+
+
+    .creation-card {
+        min-height: 215px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 767px
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    .dashboard-page {
+        min-height: calc(100vh - 62px);
+    }
+
+
+    .dashboard-content {
+        padding: 0 16px 32px;
+    }
+
+
+    .dashboard-hero {
+        min-height: auto;
+        padding-bottom: 25px;
+    }
+
+
+    .dashboard-hero-content {
+        max-width: 100%;
+        padding-top: 20px;
+    }
+
+
+    .dashboard-hero h1 {
+        font-size: 27px;
+        letter-spacing: -.4px;
+    }
+
+
+    .dashboard-hero p {
+        max-width: 100%;
+        font-size: 12px;
+    }
+
+
+    .dashboard-section-header {
+        align-items: flex-start;
+    }
+
+
+    .dashboard-section-title {
+        font-size: 16px;
+    }
+
+
+    .dashboard-section-subtitle {
+        font-size: 11px;
+    }
+
+
+    .creation-card {
+        min-height: 215px;
+    }
+
+
+    .template-card {
+        min-height: 94px;
+    }
+
+
+    .template-preview {
+        width: 68px;
+        height: 64px;
+        flex-basis: 68px;
+    }
+
+
+    .recent-documents {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+
+        .recent-documents .table {
+            min-width: 760px;
+        }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 575px
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+
+    .dashboard-content {
+        padding: 0 13px 27px;
+    }
+
+
+    .dashboard-hero-content {
+        padding-top: 17px;
+    }
+
+
+    .dashboard-hero .eyebrow {
+        font-size: 9px;
+        letter-spacing: .105em;
+    }
+
+
+    .dashboard-hero h1 {
+        font-size: 25px;
+    }
+
+
+    .dashboard-hero p {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+
+    .dashboard-section-header {
+        gap: 10px;
+    }
+
+
+    .dashboard-section-title {
+        font-size: 15px;
+    }
+
+
+    .dashboard-section-link {
+        font-size: 10px;
+    }
+
+
+    .creation-card {
+        min-height: 205px;
+    }
+
+
+    .creation-icon {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        font-size: 17px;
+    }
+
+
+    .creation-card h3 {
+        font-size: 15px;
+    }
+
+
+    .creation-card p {
+        font-size: 12px;
+    }
+
+
+    .template-preview {
+        width: 62px;
+        height: 60px;
+        flex-basis: 62px;
+    }
+
+
+    .template-card-title {
+        font-size: 11px;
+    }
+
+
+    .template-card-type {
+        font-size: 10px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL DEVICES
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .dashboard-content {
+        padding-left: 11px;
+        padding-right: 11px;
+    }
+
+
+    .dashboard-hero h1 {
+        font-size: 23px;
+    }
+
+
+    .dashboard-section-title {
+        font-size: 14px;
+    }
+
+
+    .creation-card {
+        min-height: 195px;
+    }
+
+
+        .creation-card .btn-create {
+            min-height: 35px;
+            font-size: 11px;
+        }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.creation-card .btn-create:focus-visible,
+.dashboard-section-link:focus-visible,
+.document-action:focus-visible,
+.template-card:focus-visible {
+    outline: 2px solid rgba(47, 141, 245, .55);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .creation-card,
+    .creation-card .btn-create,
+    .template-card,
+    .document-action,
+    .dashboard-section-link i {
+        transition: none;
+    }
+}

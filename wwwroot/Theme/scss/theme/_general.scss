@@ -1,0 +1,599 @@
+/*
+* ==========================================================
+*     GENERAL STYLES
+* ==========================================================
+*/
+
+body {
+    overflow-x: hidden;
+}
+
+a,
+span {
+    display: inline-block;
+    transition: all 0.3s;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+section {
+    padding: 3.125rem 0;
+}
+
+canvas {
+    user-select: none;
+}
+
+.container-fluid {
+    @include media-breakpoint-up(sm) {
+        padding: 0 2rem;
+    }
+}
+
+
+// Animation navbar dropdown menu
+.navbar {
+    .dropdown-menu {
+        display: block;
+        visibility: hidden;
+        transform: translateY(0.5rem);
+        opacity: 0
+    }
+
+    .dropdown-menu.show {
+        display: block;
+        visibility: visible;
+        transition: 0.2s ease all;
+        transform: translateY(0px);
+        opacity: 1;
+    }
+}
+
+table,
+.table {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.content-inner {
+    position: relative;
+    min-height: calc(100vh - 70px);
+    padding-bottom: 60px;
+}
+
+button,
+input {
+    outline: none !important;
+}
+
+.card {
+    margin-bottom: 2rem;
+    transition: all 0.3s;
+    box-shadow: $box-shadow-sm;
+}
+
+.card-header {
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.05);
+}
+
+.card-footer {
+    border-top: 1px solid $gray-200;
+    background: rgba($black, .03);
+
+    &:last-child {
+        @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
+    }
+}
+
+.card-cap-transparent {
+    background: rgba($black, .03);
+}
+
+.card-close {
+    @include position(absolute, 15px, $right: 15px);
+
+    .dropdown-toggle {
+        color: #999;
+        border: none;
+        background: none;
+
+        &:after {
+            display: none;
+        }
+    }
+
+    .dropdown-menu {
+        min-width: auto;
+        transition: opacity 0.4s;
+        opacity: 0;
+        border: none;
+        border-radius: 0;
+        box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1), -2px -2px 3px rgba(0, 0, 0, 0.1);
+        font-size: 0.9em;
+
+        &.is-visible {
+            opacity: 1;
+        }
+
+        a {
+            color: #999 !important;
+
+            &:hover {
+                color: #fff !important;
+                background: $primary;
+            }
+
+            i {
+                margin-right: 10px;
+                transition: none;
+                pointer-events: none;
+            }
+        }
+    }
+}
+
+.page {
+    overflow-x: hidden;
+    background: #EEF5F9;
+}
+
+.list-group-item {
+    border-right: 0;
+    border-left: 0;
+
+    &:first-child,
+    &:last-child {
+        border-radius: 0;
+    }
+}
+
+
+
+/*
+* ==========================================================
+*     SIDEBAR
+* ==========================================================
+*/
+
+nav.side-navbar {
+    overflow: hidden;
+    min-width: 250px;
+    max-width: 250px;
+    color: #686a76;
+    background: #fff;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+
+    @include media-breakpoint-down(xl) {
+        min-width: 90px;
+        max-width: 90px;
+        margin-left: -90px;
+        text-align: center;
+    }
+
+    .avatar {
+        width: 55px;
+        height: 55px;
+    }
+
+    .sidebar-header {
+        .avatar {
+            width: 55px;
+            height: 55px;
+
+            @include media-breakpoint-down(xl) {
+                margin: 0 auto;
+            }
+        }
+
+        .title {
+            @include media-breakpoint-down(xl) {
+                display: none;
+            }
+        }
+    }
+
+
+    /*==== Shrinked Sidebar ====*/
+    &.shrinked {
+        min-width: 90px;
+        max-width: 90px;
+        text-align: center;
+
+        @include media-breakpoint-down(xl) {
+            margin-left: 0;
+        }
+
+        .sidebar-header {
+            .avatar {
+                margin: 0 auto;
+            }
+
+            .title {
+                display: none;
+            }
+        }
+    }
+}
+
+
+.sidebar-item {
+    li a {
+        padding-left: 50px;
+        background: #EEF5F9;
+    }
+
+    &.active {
+        >.sidebar-link {
+            color: #fff;
+            border-left: 4px solid darken($primary, 15%);
+            background: $primary;
+
+            &:hover {
+                background: $primary;
+            }
+        }
+    }
+
+    /* submenu item active */
+    li.active>.sidebar-link {
+        color: #fff;
+        border-left: 4px solid darken($primary, 15%);
+        background: lighten($primary, 5%);
+    }
+
+    .collapse {
+        background: #EEF5F9;
+    }
+}
+
+.sidebar-link {
+    display: block;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    padding: 10px 15px;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    color: inherit;
+    border-left: 4px solid transparent;
+    font-size: 0.9rem;
+    font-weight: 300;
+    align-items: center;
+
+    @include media-breakpoint-down(xl) {
+        flex-direction: column;
+        padding: 15px 2px;
+        border-left: none;
+        font-size: 0.8rem;
+    }
+
+    &:hover {
+        color: #fff;
+        border-left: 4px solid darken($primary, 15%);
+        background: $primary;
+    }
+
+    &[data-bs-toggle="collapse"] {
+        &::before {
+            display: block;
+            width: 20px;
+            height: 20px;
+            content: '';
+            transition: all 0.3s;
+            transform: translateY(-50%);
+            transform-origin: center center;
+            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' aria-labelledby='title' aria-describedby='desc' role='img' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3EAngle Left%3C/title%3E%3Cdesc%3EA line styled icon from Orion Icon Library.%3C/desc%3E%3Cpath data-name='layer1' fill='none' stroke='%23aaa' stroke-miterlimit='10' stroke-width='5' d='M39 20.006L25 32l14 12.006' stroke-linejoin='round' stroke-linecap='round'%3E%3C/path%3E%3C/svg%3E");
+            background-position: right center;
+            @include position(absolute, $top: 50%, $right: 20px);
+
+            @include media-breakpoint-down(xl) {
+                transform: translateX(50%) rotate(90deg);
+                @include position(absolute, auto, 50%, 0, auto);
+            }
+
+        }
+    }
+
+    &[aria-expanded="true"],
+    &[aria-expanded="aria-expanded"] {
+        background: #EEF5F9;
+
+        // color: $body-color;
+        &::before {
+            transform: translateY(-50%) rotate(-90deg);
+
+            @include media-breakpoint-down(xl) {
+                transform: translateX(-50%) rotate(90deg);
+            }
+        }
+
+        &:hover {
+            color: $white;
+            background: $primary;
+        }
+    }
+
+    .badge {
+        vertical-align: middle;
+    }
+}
+
+
+// active items should also have white dropdown indicator
+.sidebar-item.active>.sidebar-link,
+.sidebar-link:hover {
+    &[data-bs-toggle="collapse"] {
+        &::before {
+            background: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' aria-labelledby='title' aria-describedby='desc' role='img' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3Ctitle%3EAngle Left%3C/title%3E%3Cdesc%3EA line styled icon from Orion Icon Library.%3C/desc%3E%3Cpath data-name='layer1' fill='none' stroke='%23fff' stroke-miterlimit='10' stroke-width='5' d='M39 20.006L25 32l14 12.006' stroke-linejoin='round' stroke-linecap='round'%3E%3C/path%3E%3C/svg%3E");
+
+        }
+    }
+}
+
+.side-navbar.shrinked {
+    .sidebar-item {
+        a.sidebar-link {
+            flex-direction: column;
+            padding: 15px 2px;
+            border-left: none;
+            font-size: 0.8rem;
+
+            &[data-bs-toggle="collapse"] {
+                &::before {
+                    transform: translateX(50%) rotate(-90deg);
+                    @include position(absolute, auto, 50%, 0, auto);
+                }
+
+                &[aria-expanded="true"],
+                &[aria-expanded="aria-expanded"] {
+                    &::before {
+                        transform: translateX(50%) rotate(90deg);
+                    }
+                }
+            }
+
+            svg {
+                margin-right: 0 !important;
+                margin-bottom: 4px;
+            }
+        }
+    }
+}
+
+
+
+
+/*====== Client Profile Box ======*/
+.client-avatar {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+
+    .status {
+        display: block;
+        width: 18px;
+        height: 18px;
+        content: '';
+        border: 3px solid #fff;
+        border-radius: 50%;
+        @include position(absolute, $bottom: 4px, $right: 4px);
+    }
+}
+
+
+/*
+* ==========================================================
+*     MAIN NAVBAR
+* ==========================================================
+*/
+
+nav.navbar {
+    background: $darkBlue;
+
+    .badge {
+        @include square(22px, $text-align: center);
+        padding: 0;
+        border-radius: 50%;
+    }
+
+    a {
+        color: inherit;
+    }
+
+    /*==== Navbar Items ====*/
+    .nav-link {
+        position: relative;
+
+        span.badge-corner {
+            @include position(absolute, 0, 0);
+        }
+    }
+
+    .nav-menu {
+        margin-bottom: 0;
+    }
+
+    /*==== Search Box ====*/
+    .search-box {
+        @include size(100%, 100%);
+        @include position(absolute, 0, 0);
+        padding: 0;
+        transition: all 0.3s;
+        transform: translateY(-101%);
+        border-radius: 0;
+        background: #fff;
+        z-index: 12;
+
+        &.fadedIn {
+            transform: none;
+        }
+
+        .dismiss {
+            @include position(absolute, 50%, 20px);
+            cursor: pointer;
+            transform: translateY(-50%);
+            color: #999;
+            border: none;
+            background: none;
+            font-size: 1.5em;
+        }
+
+        form {
+            height: 100%;
+
+            input {
+                height: 100%;
+                padding: 20px;
+                border: none;
+            }
+        }
+    }
+}
+
+/*==== Dropdowns ====*/
+.dropdown-toggle {
+    &::after {
+        margin-left: .3rem;
+        content: '\f107';
+        vertical-align: baseline;
+        border: none !important;
+        font-family: 'Font Awesome\ 5 Free';
+        font-weight: 900;
+    }
+}
+
+
+/*==== Toggle Sidebar Btn ====*/
+.menu-btn {
+    margin-right: 20px;
+    transition: all 0.7s;
+    font-size: 1.2em;
+
+    span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        margin: 4px auto 0;
+        transition: all 0.3s cubic-bezier(0.810, -0.330, 0.345, 1.375);
+        background: #fff;
+
+        &:nth-of-type(2) {
+            position: relative;
+            width: 35px;
+            transform: rotateY(180deg);
+
+            &::before,
+            &::after {
+                display: block;
+                width: 6px;
+                height: 2px;
+                content: '';
+                transition: all 0.7s;
+                transform: rotate(45deg);
+                background: #fff;
+                @include position(absolute, 2px, $left: 0);
+            }
+
+            &::after {
+                transform: rotate(145deg);
+                @include position(absolute, -2px, $left: 0);
+            }
+        }
+    }
+
+    &.active {
+        span {
+            &:first-of-type {
+                transform: translateY(12px);
+            }
+
+            &:nth-of-type(2) {
+                transform: none;
+            }
+
+            &:last-of-type {
+                transform: translateY(-12px);
+            }
+        }
+    }
+}
+
+
+/* MAIN NAVBAR MEDIAQUERIES ----------------------------------- */
+
+@include media-breakpoint-down(lg) {
+    nav.navbar {
+
+        /*==== Toggle Sidebar Btn ====*/
+        .menu-btn {
+            margin-right: 20px;
+            transition: all 0.7s;
+            font-size: 1.2em;
+
+            span {
+                &:first-of-type {
+                    transform: translateY(12px);
+                }
+
+                &:nth-of-type(2) {
+                    transform: none;
+
+                    &::before,
+                    &::after {
+                        transform: rotate(45deg);
+                    }
+
+                    &::after {
+                        transform: rotate(145deg);
+                        @include position(absolute, -2px, $left: 0);
+                    }
+                }
+
+                &:last-of-type {
+                    transform: translateY(-12px);
+                }
+            }
+
+            &.active {
+                span {
+                    &:first-of-type {
+                        transform: none;
+                    }
+
+                    &:nth-of-type(2) {
+                        transform: rotateY(180deg);
+                    }
+
+                    &:last-of-type {
+                        transform: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    nav.navbar {
+        .badge {
+            width: 19px;
+            height: 19px;
+        }
+
+        .dropdown {
+            position: static;
+        }
+
+        .dropdown-menu {
+            right: 2.5vw;
+            left: 2.5vw;
+            width: 90vw;
+            margin: 0 auto;
+        }
+    }
+}

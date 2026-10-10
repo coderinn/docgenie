@@ -1,0 +1,91 @@
+/*
+* ==========================================================
+*     SIMPLE DATATABLES
+* ==========================================================
+*/
+
+.dataTable-table>tbody>tr>td,
+.dataTable-table>tbody>tr>th,
+.dataTable-table>tfoot>tr>td,
+.dataTable-table>tfoot>tr>th,
+.dataTable-table>thead>tr>td,
+.dataTable-table>thead>tr>th {
+    padding: .75rem;
+}
+
+.dataTable-sorter::after {
+    top: 4px;
+}
+
+.dataTable-sorter::before {
+    bottom: 4px;
+}
+
+
+
+.dataTable-pagination {
+    display: flex;
+    @include list-unstyled();
+}
+
+.dataTable-pagination li a {
+    display: block;
+    position: relative;
+    text-decoration: if($link-decoration==none, null, none);
+    color: $pagination-color;
+    border: $pagination-border-width solid $pagination-border-color;
+    background-color: $pagination-bg;
+    @include transition($pagination-transition);
+
+    &:hover {
+        text-decoration: if($link-hover-decoration==underline, none, null);
+        color: $pagination-hover-color;
+        border-color: $pagination-hover-border-color;
+        background-color: $pagination-hover-bg;
+        z-index: 2;
+    }
+
+    &:focus {
+        color: $pagination-focus-color;
+        outline: $pagination-focus-outline;
+        background-color: $pagination-focus-bg;
+        box-shadow: $pagination-focus-box-shadow;
+        z-index: 3;
+    }
+}
+
+.dataTable-pagination li {
+    &:not(:first-child) a {
+        margin-left: $pagination-margin-start;
+    }
+
+    &.active a {
+        color: $pagination-active-color !important;
+        border-color: $pagination-active-border-color !important;
+        background: $pagination-active-bg !important;
+        z-index: 3;
+    }
+
+    &.disabled a {
+        pointer-events: none;
+        color: $pagination-disabled-color;
+        border-color: $pagination-disabled-border-color;
+        background-color: $pagination-disabled-bg;
+    }
+}
+
+
+.dataTable-wrapper.no-footer .dataTable-container {
+    border-bottom: none;
+}
+
+
+.dataTable-dropdown label {
+    display: flex;
+    font-size: 0.9rem;
+    align-items: center;
+
+    select {
+        margin: 0 0.5rem;
+    }
+}

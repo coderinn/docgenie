@@ -1,0 +1,859 @@
+﻿/* =========================================================
+   DOCGENIE APPLICATION SHELL
+   =========================================================
+   Global application chrome only.
+
+   This file owns:
+   - Application canvas
+   - Sidebar
+   - Sidebar navigation
+   - Usage / plan card
+   - Topbar
+   - Search
+   - User profile
+   - Mobile menu
+   - Sidebar overlay
+   - Main content host
+
+   Page-specific UI belongs in:
+   dashboard.css
+   builder.css
+   documents.css
+   etc.
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL RESET FOR APP SHELL
+   ========================================================= */
+
+html,
+body {
+    min-height: 100%;
+}
+
+
+body {
+    margin: 0;
+    color: #17375e;
+    background: #f5f9fd;
+    font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+}
+
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   APPLICATION SHELL
+   ========================================================= */
+
+.app-shell {
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    background: #f5f9fd;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.app-sidebar {
+    width: 260px;
+    min-width: 260px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 18px 16px 16px;
+    /*
+       Soft glossy DocGenie atmosphere.
+       No images.
+       No pseudo-elements.
+       No additional layers.
+    */
+    background: linear-gradient( rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0.38) ), url("/images/sidebar-blue-bg.png") center center / cover no-repeat;
+    border-right: 1px solid rgba(211, 226, 240, 0.72);
+    z-index: 120;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #d6e4ef transparent;
+}
+
+
+/* =========================================================
+   SIDEBAR BRAND
+   ========================================================= */
+
+.app-sidebar-brand {
+    padding: 0 0 18px;
+}
+
+
+.app-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: #183b60;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+
+    .app-brand:hover {
+        color: #183b60;
+        text-decoration: none;
+    }
+
+
+/* Brand icon */
+
+.app-brand-icon {
+    width: 37px;
+    height: 37px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 37px;
+    border-radius: 10px;
+    color: #ffffff;
+    background: linear-gradient( 135deg, #3a98f5, #2d7ee3 );
+    box-shadow: 0 6px 15px rgba(47, 141, 245, .17);
+}
+
+
+    .app-brand-icon i {
+        font-size: 15px;
+    }
+
+
+/* Brand name */
+
+.app-brand-name {
+    color: #183b60;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -.35px;
+}
+
+
+/* =========================================================
+   SIDEBAR NAVIGATION
+   ========================================================= */
+
+.app-sidebar-nav {
+    flex: 1;
+    min-height: 0;
+}
+
+
+.sidebar-section-title {
+    margin: 20px 13px 9px;
+    color: #667d94;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .09em;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+
+/* Navigation link */
+
+.app-nav-link {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 0 12px;
+    margin-bottom: 2px;
+    color: #617b96;
+    border-radius: 9px;
+    background: transparent;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1;
+    text-decoration: none;
+    transition: color .18s ease, background-color .18s ease;
+}
+
+
+    .app-nav-link:hover {
+        color: #2f8df5;
+        background: #f4f8fd;
+        text-decoration: none;
+    }
+
+
+    .app-nav-link i {
+        width: 18px;
+        flex: 0 0 18px;
+        color: #7891a9;
+        font-size: 14px;
+        line-height: 1;
+        text-align: center;
+        transition: color .18s ease;
+    }
+
+
+    .app-nav-link:hover i {
+        color: #2f8df5;
+    }
+
+
+    /* Active */
+
+    .app-nav-link.active {
+        color: #2f8df5;
+        background: #eaf4ff;
+        font-weight: 600;
+    }
+
+
+        .app-nav-link.active i {
+            color: #2f8df5;
+        }
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+   ========================================================= */
+
+.app-sidebar-bottom {
+    margin-top: auto;
+    padding-top: 18px;
+}
+
+
+/* =========================================================
+   USAGE CARD
+   ========================================================= */
+
+.sidebar-usage-card {
+    padding: 14px;
+    border: 1px solid #e1eaf3;
+    border-radius: 12px;
+    background: #f8fbfe;
+    box-shadow: 0 3px 10px rgba(42, 76, 108, .035);
+}
+
+
+/* Usage header */
+
+.sidebar-usage-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 9px;
+    color: #607b96;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+
+    .sidebar-usage-header span:last-child {
+        color: #365d82;
+        font-weight: 700;
+    }
+
+
+/* Usage bar */
+
+.sidebar-usage-bar {
+    width: 100%;
+    height: 5px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #e3edf6;
+}
+
+
+    .sidebar-usage-bar span {
+        display: block;
+        width: 0%;
+        height: 100%;
+        border-radius: inherit;
+        background: linear-gradient( 90deg, #3698f5, #4c84e8 );
+    }
+
+
+/* Usage footer */
+
+.sidebar-usage-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 9px;
+    color: #8197ac;
+    font-size: 10px;
+}
+
+
+    .sidebar-usage-footer a {
+        color: #2f8df5;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+
+        .sidebar-usage-footer a:hover {
+            color: #2477d8;
+            text-decoration: none;
+        }
+
+
+/* =========================================================
+   MAIN APPLICATION AREA
+   ========================================================= */
+
+.app-main {
+    min-width: 0;
+    width: calc(100% - 260px);
+    min-height: 100vh;
+    margin-left: 260px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    background: radial-gradient( circle at 78% 10%, rgba(98, 168, 248, 0.17) 0%, rgba(98, 168, 248, 0.08) 18%, transparent 38% ), radial-gradient( circle at 98% 48%, rgba(83, 155, 241, 0.12) 0%, transparent 25% ), radial-gradient( circle at 45% 100%, rgba(94, 169, 247, 0.07) 0%, transparent 32% ), linear-gradient( 135deg, #f8fbff 0%, #f2f8fe 48%, #f8fbff 100% );
+}
+/* =========================================================
+   TOPBAR
+   ========================================================= */
+.app-topbar {
+    width: 100%;
+    min-height: 62px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transition: background-color .22s ease, border-color .22s ease, box-shadow .22s ease, backdrop-filter .22s ease;
+    isolation: isolate;
+}
+    .app-topbar.is-scrolled {
+        background: rgba(246, 250, 255, .92);
+        border-bottom: 1px solid rgba(218, 231, 243, .35);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: 0 4px 18px rgba(43, 83, 120, .045);
+    }
+.app-topbar-inner {
+    width: 100%;
+    min-height: 62px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 0 30px;
+}
+
+
+/* =========================================================
+   TOPBAR SEARCH
+   ========================================================= */
+
+.app-search {
+    width: 430px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0 16px;
+    border: 1px solid rgba(211, 226, 240, 0.72);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.66);
+    box-shadow: 0 3px 12px rgba(54, 101, 145, 0.025);
+    transition: border-color .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+
+
+    .app-search:hover {
+        background: rgba(255, 255, 255, 0.78);
+    }
+
+
+    .app-search:focus-within {
+        border-color: rgba(105, 168, 226, 0.55);
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow: 0 0 0 3px rgba(47, 141, 245, 0.055);
+    }
+
+
+    .app-search > i {
+        flex: 0 0 auto;
+        color: #82a0ba;
+        font-size: 14px;
+    }
+
+
+    .app-search input {
+        width: 100%;
+        min-width: 0;
+        border: 0;
+        outline: 0;
+        color: #456985;
+        background: transparent;
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+
+        .app-search input::placeholder {
+            color: #89a3bb;
+            opacity: 1;
+        }
+
+
+/* =========================================================
+   TOPBAR ACTIONS
+   ========================================================= */
+
+.app-topbar-actions {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* =========================================================
+   NOTIFICATION
+   ========================================================= */
+
+.app-topbar-icon {
+    width: 42px;
+    height: 42px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(224, 234, 243, 0.42);
+    border-radius: 50%;
+    color: #7894ad;
+    background: rgba(255, 255, 255, 0.42);
+    font-size: 14px;
+    cursor: pointer;
+    transition: color .18s ease, background-color .18s ease, transform .18s ease;
+}
+
+
+    .app-topbar-icon:hover {
+        color: #2f8df5;
+        background: rgba(234, 244, 255, 0.75);
+        transform: translateY(-1px);
+    }
+
+
+.notification-dot {
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    background: #4b91ed;
+}
+
+
+/* =========================================================
+   USER PROFILE
+   ========================================================= */
+/* =========================================================
+   USER PROFILE
+   ========================================================= */
+
+.app-user {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 4px 5px 4px 4px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color .18s ease;
+}
+
+
+    .app-user:hover {
+        background: rgba(235, 244, 252, 0.60);
+    }
+
+
+.app-user-avatar {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 42px;
+    border-radius: 50%;
+    color: #ffffff;
+    background: linear-gradient( 135deg, #438ff5, #6968e8 );
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 5px 13px rgba(67, 143, 245, 0.15);
+}
+
+
+.app-user-info {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.app-user-name {
+    color: #17375e;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.25;
+    white-space: nowrap;
+}
+
+
+.app-user-role {
+    margin-top: 2px;
+    color: #8ba0b5;
+    font-size: 9px;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+
+.app-user-chevron {
+    margin-left: 3px;
+    color: #7892aa;
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   APP CONTENT HOST
+   ========================================================= */
+
+.app-content {
+    position: relative;
+    z-index: 0;
+    flex: 1;
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+}
+
+
+/* =========================================================
+   MOBILE MENU BUTTON
+   ========================================================= */
+
+.app-mobile-menu {
+    width: 42px;
+    height: 42px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 42px;
+    border: 0;
+    border-radius: 10px;
+    color: #617b96;
+    background: #f1f6fb;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+    .app-mobile-menu:hover {
+        color: #2f8df5;
+        background: #eaf4ff;
+    }
+
+
+/* =========================================================
+   SIDEBAR OVERLAY
+   ========================================================= */
+
+.app-sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 42, 65, .22);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    z-index: 110;
+}
+
+
+/* =========================================================
+   FOCUS ACCESSIBILITY
+   ========================================================= */
+
+.app-nav-link:focus-visible,
+.app-topbar-icon:focus-visible,
+.app-mobile-menu:focus-visible,
+.app-brand:focus-visible,
+.app-user:focus-visible,
+.sidebar-usage-footer a:focus-visible {
+    outline: 2px solid rgba(47, 141, 245, .55);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   RESPONSIVE — 1399px
+   ========================================================= */
+
+@media (max-width: 1399.98px) {
+
+    .app-topbar-inner {
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 1199px
+   ========================================================= */
+
+@media (max-width: 1199.98px) {
+
+    .app-sidebar {
+        width: 235px;
+        min-width: 235px;
+    }
+
+
+    .app-main {
+        width: calc(100% - 235px);
+        margin-left: 235px;
+    }
+
+
+    .app-topbar-inner {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+
+    .app-search {
+        width: min(500px, 45vw);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 991px
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+
+    .app-sidebar {
+        width: 220px;
+        min-width: 220px;
+    }
+
+
+    .app-main {
+        width: calc(100% - 220px);
+        margin-left: 220px;
+    }
+
+
+    .app-topbar-inner {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+
+    .app-search {
+        width: min(400px, 42vw);
+    }
+
+
+    .app-user-info {
+        display: none;
+    }
+
+
+    .app-user-chevron {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 767px
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+
+    /* Sidebar becomes off-canvas */
+
+    .app-sidebar {
+        width: min(285px, 82vw);
+        min-width: min(285px, 82vw);
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translateX(-105%);
+        transition: transform .25s ease;
+        box-shadow: 10px 0 30px rgba(34, 67, 98, .10);
+    }
+
+
+        .app-sidebar.is-open {
+            transform: translateX(0);
+        }
+
+
+    .app-sidebar-overlay.is-visible {
+        display: block;
+    }
+
+
+    /* Main takes full width */
+
+    .app-main {
+        width: 100%;
+        margin-left: 0;
+        min-height: 100vh;
+    }
+
+
+    /* Topbar */
+
+    .app-topbar {
+        min-height: 62px;
+    }
+
+
+    .app-topbar-inner {
+        min-height: 62px;
+        padding: 0 16px;
+        gap: 12px;
+    }
+
+
+    .app-mobile-menu {
+        display: inline-flex;
+    }
+
+
+    .app-search {
+        flex: 1;
+        width: auto;
+        height: 44px;
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+
+        .app-search input {
+            font-size: 12px;
+        }
+
+
+    .app-topbar-actions {
+        gap: 7px;
+    }
+
+
+    .app-topbar-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+
+    .app-user {
+        padding: 0;
+    }
+
+
+    .app-user-avatar {
+        width: 40px;
+        height: 40px;
+        flex-basis: 40px;
+    }
+
+
+    .app-user-info,
+    .app-user-chevron {
+        display: none;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — 575px
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+
+    .app-topbar-inner {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+
+    .app-mobile-menu {
+        width: 39px;
+        height: 39px;
+        flex-basis: 39px;
+    }
+
+
+    .app-search {
+        height: 42px;
+    }
+
+
+        .app-search input {
+            font-size: 11px;
+        }
+
+
+    .app-topbar-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+
+    .app-user-avatar {
+        width: 38px;
+        height: 38px;
+        flex-basis: 38px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .app-nav-link,
+    .app-topbar-icon,
+    .app-user,
+    .app-mobile-menu,
+    .app-sidebar {
+        transition: none;
+    }
+}

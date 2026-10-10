@@ -1,0 +1,527 @@
+@-moz-document url-prefix() {
+    .scrollbar {
+        overflow: auto;
+        width: 0.3em !important; /* Reduced width for a thinner scrollbar */
+        scroll-behavior: smooth !important;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3) !important;
+        background-color: darkgrey !important;
+        outline: 1px solid slategrey !important;
+        border-radius: 10px !important;
+    }
+}
+
+::-webkit-scrollbar {
+    width: 0.3em !important; /* Thinner vertical scrollbar */
+    height: 0.3em !important; /* Thinner horizontal scrollbar */
+    scroll-behavior: smooth !important;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: darkgrey !important;
+    outline: 1px solid slategrey !important;
+    border-radius: 10px !important;
+}
+
+::-webkit-scrollbar-horizontal {
+    height: 0.3em !important; /* Thinner horizontal scrollbar */
+}
+
+
+.lightgray-text {
+    color: lightgray;
+}
+
+.dimgray-text {
+    color: dimgray;
+}
+
+.darkgray-text {
+    color: darkgray;
+}
+
+/* Initial button style with no background */
+.btn-no-bg-primary,
+.btn-no-bg-danger {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: #555;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+    /* Hover effect for primary button (Edit) */
+    .btn-no-bg-primary:hover {
+        background-color: #796AEE; /* btn-primary blue */
+        color: #fff;
+    }
+
+    /* Hover effect for danger button (Delete) */
+    .btn-no-bg-danger:hover {
+        background-color: #dc3545; /* btn-danger red */
+        color: #fff;
+    }
+
+        /* Change icon color to white on hover */
+        .btn-no-bg-primary:hover i,
+        .btn-no-bg-danger:hover i {
+            color: #fff;
+        }
+
+    /* Optionally, remove focus outline */
+    .btn-no-bg-primary:focus,
+    .btn-no-bg-danger:focus {
+        outline: none;
+    }
+
+/* Styling the Add New button */
+.btn-white-accent {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background-color: #fff; /* White background */
+    color: #333; /* Dark gray text */
+    border: 1px solid #ddd; /* Light gray border */
+    border-radius: 5px;
+    padding: 8px 16px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+}
+
+    /* Accent bar on the left side */
+    .btn-white-accent::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 5px; /* Accent bar width */
+        height: 100%;
+        background-color: #ae88e6; /* Very light purple */
+        border-radius: 5px 0 0 5px; /* Match button's border-radius */
+        transition: background-color 0.3s ease;
+    }
+
+    /* Hover effects for the button */
+    .btn-white-accent:hover {
+        color: #6f42c1; /* Bootstrap purple color for text */
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+        transform: scale(1.05); /* Slightly enlarge button */
+    }
+
+        /* Change accent bar color on hover */
+        .btn-white-accent:hover::before {
+            background-color: #d4c5f9; /* Slightly darker light purple */
+        }
+
+    /* Add shake animation for icon */
+    .btn-white-accent i {
+        margin-right: 8px; /* Space between icon and text */
+        display: inline-block; /* Ensures animation works */
+        transition: transform 0.3s ease;
+    }
+
+    /* Icon shakes on hover */
+    .btn-white-accent:hover i {
+        animation: icon-shake 0.6s ease infinite;
+    }
+/* Shake animation keyframes */
+@@keyframes icon-shake {
+    0%, 100% {
+        transform: translateX(0); /* Neutral position */
+    }
+
+    25% {
+        transform: translateX(-2px); /* Move left */
+    }
+
+    50% {
+        transform: translateX(2px); /* Move right */
+    }
+
+    75% {
+        transform: translateX(-2px); /* Move left again */
+    }
+}
+
+/* Save button styling */
+.btn-save {
+    display: inline-flex;
+    align-items: center;
+    justify-content: start;
+    background-color: white; /* White background */
+    color: #4caf50; /* Green text */
+    border: 1px solid rgba(0, 0, 0, 0.2); /* Subtle but visible border around the button */
+    border-left: 4px solid #4caf50; /* Standard green left border */
+    border-radius: 4px; /* Slightly rounded corners */
+    padding: 10px 20px; /* Internal spacing */
+    font-size: 16px; /* Readable font size */
+    font-weight: 500; /* Medium weight text */
+    text-transform: uppercase; /* Uppercase text */
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    cursor: pointer; /* Pointer cursor */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+}
+
+    /* Icon styling */
+    .btn-save i {
+        margin-right: 10px; /* Space between icon and text */
+        font-size: 18px; /* Icon size */
+        transition: transform 0.3s ease; /* Smooth transform animation */
+    }
+
+    /* Hover effects */
+    .btn-save:hover {
+        background-color: #4caf50; /* Green background */
+        color: white; /* White text on hover */
+        border-color: #4caf50; /* Highlight border color */
+        transform: translateY(-2px); /* Slight upward lift */
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+    }
+
+        .btn-save:hover i {
+            transform: scale(1.2); /* Slight scale animation for the icon */
+        }
+
+    /* Active state for click */
+    .btn-save:active {
+        transform: translateY(0); /* Reset lift */
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1); /* Reset shadow */
+    }
+
+
+    .btn-save:disabled {
+        background-color: #f5f5f5;
+        color: #bdbdbd;
+        border-left: 5px solid #bdbdbd;
+        cursor: not-allowed;
+        box-shadow: none;
+    }
+
+/* Container for the horizontal tabs */
+.vertical-tab-container {
+    display: block;
+    background-color: #fff;
+    border-radius: 1px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Tab button panel (Horizontal) */
+.theme-tab-menu {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    width: 100%;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+    .theme-tab-menu a {
+        display: block;
+        padding: 15px 25px;
+        font-size: 16px;
+        font-weight: 500;
+        color: darkgray;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border-radius: 4px;
+        margin-right: 10px;
+        position: relative;
+    }
+
+        .theme-tab-menu a:hover {
+            background-color: #e9ecef;
+            color: #6555DF;
+        }
+
+        .theme-tab-menu a.active {
+            color: #6555DF;
+        }
+
+            /* Add underline to active tab */
+            .theme-tab-menu a.active::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 3px; /* Thickness of the underline */
+                background-color: #6555DF; /* Color of the underline */
+            }
+
+/* Tab Content Section below the Tabs */
+.vertical-tab-content {
+    display: none;
+}
+
+    .vertical-tab-content.active {
+        display: block;
+    }
+
+.custom-role-list {
+    height: 100%; /* Set the height here */
+    overflow-y: none; /* Enable scrolling only when necessary */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 0; /* Remove extra padding */
+}
+
+    .custom-role-list .list-group-item {
+        /* border: 1px solid #ddd; */
+        margin: 5px 0;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+        .custom-role-list .list-group-item:hover {
+            background-color: #f0f0f0;
+            transform: translateX(5px); /* Slide effect */
+        }
+
+    .custom-role-list .badge {
+        background-color: #6555DF;
+    }
+
+    /* Highlight selected role */
+    .custom-role-list .list-group-item.selected {
+        background-color: #bdb4ff !important; /* Highlight background */
+        color: white; /* Text color change for selected item */
+        transform: none; /* Remove hover effect on selected item */
+    }
+
+    /* Optional: Add hover effect for unselected roles */
+    .custom-role-list .list-group-item:hover:not(.selected) {
+        background-color: #f0f0f0;
+    }
+
+/* Collapsible icon */
+.icon-collapsible {
+    font-size: 14px;
+    margin-right: 10px;
+    transition: transform 0.3s;
+}
+
+/* Rotate icon when open */
+.collapse.show + .icon-collapsible {
+    transform: rotate(90deg);
+}
+
+
+
+
+
+/* Responsive behavior for small screens */
+@@media (max-width: 767px) {
+    .theme-tab-menu {
+        flex-direction: column; /* Stack tabs vertically on small screens */
+    }
+
+        .theme-tab-menu a {
+            margin-right: 0;
+            margin-bottom: 10px; /* Add margin between stacked tabs */
+        }
+}
+
+.rotate-icon {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+    .rotate-icon.collapsed {
+        transform: rotate(180deg);
+    }
+.form-check-container {
+    margin-bottom: 15px; /* Add space between rows */
+}
+
+.form-check-custom {
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 0px;
+    margin-bottom: 0.125rem;
+}
+/*.custom-checkbox {
+    width: 20px;*/ /* Adjust checkbox size */
+    /*height: 20px;
+    margin-right: 3px;*/ /* Space between checkbox and label */
+/*}*/
+
+.form-check-label {
+    font-size: 1rem; /* Slightly larger text for better readability */
+    color: #495057; /* Softer color for the label */
+}
+
+
+/* Custom checkbox container */
+.custom-checkbox-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+/* Hide the default checkbox */
+.custom-checkbox {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+
+    /* Create a custom checkbox appearance */
+    .custom-checkbox + label {
+        position: relative;
+        padding-left: 30px; /* Space for the custom checkbox */
+        cursor: pointer;
+        font-size: 1rem;
+        color: #495057; /* Label text color */
+    }
+
+        /* Custom checkbox square */
+        .custom-checkbox + label::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border: 2px solid lightgray; /* Border color */
+            border-radius: 4px; /* Slight rounding for a modern look */
+            background-color: #fff; /* White background */
+            transition: all 0.3s ease; /* Smooth transition */
+        }
+
+    /* Nested rectangle inside custom checkbox */
+    .custom-checkbox:checked + label::after {
+        content: '';
+        position: absolute;
+        left: 5px; /* Adjust placement */
+        top: 5px; /* Adjust placement */
+        width: 10px;
+        height: 10px;
+        background-color: #6555DF; /* Inner rectangle color */
+        border-radius: 2px; /* Matches outer border's rounding */
+        transition: all 0.3s ease; /* Smooth transition */
+    }
+.bg-light-purple {
+    background-color: #AE88E6; /* Light Purple */
+    color: #fff;
+    border-radius: 5px 5px 0 0;
+    padding: 10px;
+}
+
+/* Slide-Out Panel */
+.slide-out-panel {
+    position: fixed;
+    top: 0;
+    right: -100%; /* Hidden by default */
+    width: 50%; /* Default width for larger screens */
+    height: 100%;
+    background: #fff;
+    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.15); /* Slightly darker shadow for depth */
+    transition: right 0.3s ease;
+    z-index: 1050;
+    border-radius: 8px 0 0 8px; /* Rounded corners */
+}
+
+    .slide-out-panel.open {
+        right: 0; /* Slide in */
+    }
+
+/* Header of the Slide-Out Panel */
+.slide-out-header {
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    position: relative;
+    border-radius: 8px 8px 0 0; /* Rounded corners */
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+    /* Title inside the Slide-Out Header */
+    .slide-out-header h4 {
+        font-size: 1.3rem; /* Slightly larger font */
+        color: #6a0dad; /* Purple color */
+        margin: 0;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+    }
+
+        /* Icon inside the Slide-Out Header */
+        .slide-out-header h4 i {
+            margin-right: 12px;
+            font-size: 1.6rem; /* Increased icon size */
+            color: #6a0dad;
+        }
+
+    /* Gradient Bottom Line for Header */
+    .slide-out-header::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #6a0dad, #9b59b6); /* Subtle gradient effect */
+        border-radius: 4px;
+    }
+
+/* Body of the Slide-Out Panel */
+.slide-out-body {
+    padding: 20px;
+    max-height: calc(100vh - 140px); /* Adjusted for better padding */
+    overflow-y: auto;
+    font-size: 0.95rem; /* Smaller font size for a cleaner look */
+    color: #555; /* Darker gray text */
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .slide-out-panel {
+        width: 100%; /* Full width for mobile devices */
+        border-radius: 0; /* Remove rounded corners on mobile */
+    }
+
+    .slide-out-header {
+        padding: 15px 20px; /* Adjust header padding for mobile */
+    }
+
+        /* Adjust title and icon size for mobile */
+        .slide-out-header h4 {
+            font-size: 1.1rem;
+        }
+
+            .slide-out-header h4 i {
+                font-size: 1.4rem;
+            }
+
+    .slide-out-body {
+        padding: 10px 15px; /* Adjust body padding for mobile */
+        font-size: 0.85rem; /* Slightly smaller font size */
+    }
+}
+
+
+
+/* Close Button inside the Panel */
+.closePanelBtn {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: #6a0dad;
+    cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+    /* Hover Effect for Close Button */
+    .closePanelBtn:hover {
+        color: #9b59b6; /* Hover color change */
+        transform: scale(1.1); /* Slight zoom effect */
+    }
+
+

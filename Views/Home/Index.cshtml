@@ -1,0 +1,1052 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+
+}
+
+
+@section Styles {
+
+    <link rel="stylesheet"
+          href="~/css/dashboard.css"
+          asp-append-version="true" />
+
+}
+
+
+<div class="dashboard-page">
+
+
+    <!-- =====================================================
+         DASHBOARD CONTENT
+         ===================================================== -->
+
+    <div class="dashboard-content">
+
+
+        <!-- =================================================
+             HERO
+             ================================================= -->
+
+        <section class="dashboard-hero">
+
+            <div class="dashboard-hero-content">
+
+                <div class="eyebrow">
+                    DOCUMENT AUTOMATION
+                </div>
+
+
+                <h1>
+                    Welcome back, Usman
+                </h1>
+
+
+                <p>
+                    What would you like to create today?
+                    Choose a document type and get started in seconds.
+                </p>
+
+            </div>
+
+
+            <!-- =============================================
+                 DECORATIVE DOCUMENT ART
+                 ============================================= -->
+
+            <div class="hero-document-art">
+
+                <i class="far fa-file-alt"></i>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CREATE DOCUMENT
+             ================================================= -->
+
+        <section class="creation-section">
+
+
+            <!-- Section Header -->
+
+            <div class="dashboard-section-header">
+
+                <div class="dashboard-section-heading">
+
+                    <h2 class="dashboard-section-title">
+                        Create a document
+                    </h2>
+
+                    <div class="dashboard-section-subtitle">
+                        Start with a document type or build your own.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 CREATION CARDS
+                 ================================================= -->
+
+            <div class="row g-3 g-xl-4">
+
+
+                <!-- =============================================
+                     CERTIFICATE
+                     ============================================= -->
+
+                <div class="col-12 col-md-6 col-xl-3">
+
+                    <div class="creation-card  card h-100">
+
+                        <div class="card-body p-4 d-flex flex-column">
+
+
+                            <div class="creation-heading">
+
+                                <div class="creation-icon creation-icon-blue">
+
+                                    <i class="fas fa-certificate"></i>
+
+                                </div>
+
+                                <h3>
+                                    Certificate
+                                </h3>
+
+                            </div>
+
+
+                            <p>
+                                Create personalized certificates
+                                from your data in bulk.
+                            </p>
+
+
+                            <a href="#"
+                               class="btn btn-create
+                                w-100
+                                mt-auto">
+
+                                Create Certificate
+
+                                <i class="fas fa-arrow-right ms-2"></i>
+
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     LETTER
+                     ============================================= -->
+
+                <div class="col-12 col-md-6 col-xl-3">
+
+                    <div class="creation-card card h-100">
+
+                        <div class="card-body p-4 d-flex flex-column">
+
+
+                            <div class="creation-icon
+                                creation-icon-purple
+                                mb-4">
+
+                                <i class="far fa-envelope"></i>
+
+                            </div>
+
+
+                            <h3>
+                                Letter
+                            </h3>
+
+
+                            <p>
+                                Generate personalized letters,
+                                notices and official documents.
+                            </p>
+
+
+                            <a href="#"
+                               class="btn btn-create
+                                w-100
+                                mt-auto">
+
+                                Create Letter
+
+                                <i class="fas fa-arrow-right ms-2"></i>
+
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     INVOICE
+                     ============================================= -->
+
+                <div class="col-12 col-md-6 col-xl-3">
+
+                    <div class="creation-card card h-100">
+
+                        <div class="card-body p-4 d-flex flex-column">
+
+
+                            <div class="creation-icon
+                                creation-icon-orange
+                                mb-4">
+
+                                <i class="fas fa-file-invoice-dollar"></i>
+
+                            </div>
+
+
+                            <h3>
+                                Invoice
+                            </h3>
+
+
+                            <p>
+                                Create invoices and other business
+                                documents in bulk.
+                            </p>
+
+
+                            <a href="#"
+                               class="btn btn-create
+                                w-100
+                                mt-auto">
+
+                                Create Invoice
+
+                                <i class="fas fa-arrow-right ms-2"></i>
+
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     START FROM SCRATCH
+                     ============================================= -->
+
+                <div class="col-12 col-md-6 col-xl-3">
+
+                    <div class="creation-card card h-100">
+
+                        <div class="card-body p-4 d-flex flex-column">
+
+
+                            <div class="creation-icon
+                                creation-icon-green
+                                mb-4">
+
+                                <i class="fas fa-magic"></i>
+
+                            </div>
+
+
+                            <h3>
+                                Start from Scratch
+                            </h3>
+
+
+                            <p>
+                                Design your own document using
+                                the DocGenie template builder.
+                            </p>
+
+
+                            <a href="#"
+                               class="btn btn-create
+                                w-100
+                                mt-auto">
+
+                                Start Designing
+
+                                <i class="fas fa-arrow-right ms-2"></i>
+
+                            </a>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             POPULAR TEMPLATES
+             ================================================= -->
+
+        <section class="templates-section mt-4 mt-lg-5">
+
+
+            <!-- Section Header -->
+
+            <div class="dashboard-section-header">
+
+
+                <div class="dashboard-section-heading">
+
+                    <h2 class="dashboard-section-title">
+                        Popular Templates
+                    </h2>
+
+
+                    <div class="dashboard-section-subtitle">
+                        Start quickly with a professionally designed template.
+                    </div>
+
+                </div>
+
+
+                <a href="#"
+                   class="dashboard-section-link">
+
+                    Browse all
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TEMPLATE CARDS
+                 ================================================= -->
+
+            <div class="row g-3">
+
+
+                <!-- =============================================
+                     TEMPLATE 1
+                     ============================================= -->
+
+                <div class="col-12 col-sm-6 col-xl-3">
+
+                    <a href="#"
+                       class="template-card
+                        p-3
+                        d-flex
+                        align-items-center
+                        gap-3
+                        text-decoration-none">
+
+
+                        <div class="template-preview">
+
+                            <div class="w-100 h-100
+                                d-flex
+                                flex-column
+                                align-items-center
+                                justify-content-center
+                                text-center
+                                px-2">
+
+                                <i class="fas fa-award mb-1"
+                                   style="font-size:18px;color:#8db8df;"></i>
+
+                                <div style="
+                                    font-size:7px;
+                                    font-weight:700;
+                                    color:#7189a0;
+                                    letter-spacing:.04em;">
+
+                                    CERTIFICATE
+
+                                </div>
+
+
+                                <div style="
+                                    width:45px;
+                                    height:1px;
+                                    background:#dce7f0;
+                                    margin:4px 0;">
+                                </div>
+
+
+                                <div style="
+                                    width:38px;
+                                    height:3px;
+                                    background:#e7eef5;
+                                    border-radius:2px;">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="min-w-0">
+
+                            <div class="template-card-title">
+                                Modern Certificate
+                            </div>
+
+
+                            <div class="template-card-type">
+                                Certificate
+                            </div>
+
+                        </div>
+
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     TEMPLATE 2
+                     ============================================= -->
+
+                <div class="col-12 col-sm-6 col-xl-3">
+
+                    <a href="#"
+                       class="template-card
+                        p-3
+                        d-flex
+                        align-items-center
+                        gap-3
+                        text-decoration-none">
+
+
+                        <div class="template-preview">
+
+                            <div class="w-100 h-100
+                                d-flex
+                                flex-column
+                                align-items-center
+                                justify-content-center
+                                px-3">
+
+                                <i class="far fa-file-alt mb-1"
+                                   style="font-size:18px;color:#a99de9;"></i>
+
+
+                                <div style="
+                                    width:48px;
+                                    height:4px;
+                                    background:#e5e0fb;
+                                    border-radius:3px;
+                                    margin-bottom:5px;">
+                                </div>
+
+
+                                <div style="
+                                    width:58px;
+                                    height:3px;
+                                    background:#e9edf2;
+                                    border-radius:3px;
+                                    margin-bottom:4px;">
+                                </div>
+
+
+                                <div style="
+                                    width:48px;
+                                    height:3px;
+                                    background:#edf1f4;
+                                    border-radius:3px;">
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="min-w-0">
+
+                            <div class="template-card-title">
+                                Professional Letter
+                            </div>
+
+
+                            <div class="template-card-type">
+                                Letter
+                            </div>
+
+                        </div>
+
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     TEMPLATE 3
+                     ============================================= -->
+
+                <div class="col-12 col-sm-6 col-xl-3">
+
+                    <a href="#"
+                       class="template-card
+                        p-3
+                        d-flex
+                        align-items-center
+                        gap-3
+                        text-decoration-none">
+
+
+                        <div class="template-preview">
+
+                            <div class="w-100 h-100
+                                d-flex
+                                flex-column
+                                px-2
+                                py-2">
+
+
+                                <div class="d-flex
+                                    align-items-center
+                                    justify-content-between">
+
+                                    <span style="
+                                        font-size:7px;
+                                        font-weight:700;
+                                        color:#e3a271;">
+
+                                        INVOICE
+
+                                    </span>
+
+
+                                    <i class="fas fa-file-invoice"
+                                       style="
+                                        font-size:10px;
+                                        color:#e8b084;">
+                                    </i>
+
+                                </div>
+
+
+                                <div style="
+                                    width:100%;
+                                    height:1px;
+                                    background:#e8edf2;
+                                    margin:5px 0;">
+                                </div>
+
+
+                                <div style="
+                                    width:100%;
+                                    height:3px;
+                                    background:#edf1f4;
+                                    border-radius:2px;
+                                    margin-bottom:4px;">
+                                </div>
+
+
+                                <div style="
+                                    width:78%;
+                                    height:3px;
+                                    background:#edf1f4;
+                                    border-radius:2px;
+                                    margin-bottom:4px;">
+                                </div>
+
+
+                                <div style="
+                                    width:88%;
+                                    height:3px;
+                                    background:#edf1f4;
+                                    border-radius:2px;">
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="min-w-0">
+
+                            <div class="template-card-title">
+                                Clean Invoice
+                            </div>
+
+
+                            <div class="template-card-type">
+                                Invoice
+                            </div>
+
+                        </div>
+
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     TEMPLATE 4
+                     ============================================= -->
+
+                <div class="col-12 col-sm-6 col-xl-3">
+
+                    <a href="#"
+                       class="template-card
+                        p-3
+                        d-flex
+                        align-items-center
+                        gap-3
+                        text-decoration-none">
+
+
+                        <div class="template-preview">
+
+                            <div class="w-100 h-100
+                                d-flex
+                                flex-column
+                                align-items-center
+                                justify-content-center
+                                px-3">
+
+
+                                <div style="
+                                    width:30px;
+                                    height:25px;
+                                    border:2px solid #8bc6b4;
+                                    border-radius:4px;
+                                    margin-bottom:5px;
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;">
+
+                                    <i class="fas fa-user"
+                                       style="
+                                        font-size:10px;
+                                        color:#75b8a4;">
+                                    </i>
+
+                                </div>
+
+
+                                <div style="
+                                    width:55px;
+                                    height:3px;
+                                    background:#e5eef0;
+                                    border-radius:2px;
+                                    margin-bottom:4px;">
+                                </div>
+
+
+                                <div style="
+                                    width:42px;
+                                    height:3px;
+                                    background:#edf1f3;
+                                    border-radius:2px;">
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="min-w-0">
+
+                            <div class="template-card-title">
+                                Simple ID Card
+                            </div>
+
+
+                            <div class="template-card-type">
+                                ID Card
+                            </div>
+
+                        </div>
+
+
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             RECENT DOCUMENTS
+             ================================================= -->
+
+        <section class="mt-4 mt-lg-5">
+
+
+            <!-- Section Header -->
+
+            <div class="dashboard-section-header">
+
+                <div class="dashboard-section-heading">
+
+                    <h2 class="dashboard-section-title">
+                        Recent Documents
+                    </h2>
+
+
+                    <div class="dashboard-section-subtitle">
+                        Your latest generated documents.
+                    </div>
+
+                </div>
+
+
+                <a href="#"
+                   class="dashboard-section-link">
+
+                    View all
+
+                    <i class="fas fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 DOCUMENT TABLE
+                 ================================================= -->
+
+            <div class="recent-documents">
+
+
+                <div class="table-responsive">
+
+                    <table class="table align-middle mb-0">
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th class="ps-4">
+                                    DOCUMENT
+                                </th>
+
+                                <th>
+                                    TYPE
+                                </th>
+
+                                <th>
+                                    RECORDS
+                                </th>
+
+                                <th>
+                                    GENERATED
+                                </th>
+
+                                <th>
+                                    STATUS
+                                </th>
+
+                                <th class="text-end pe-4">
+                                    ACTIONS
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            <!-- =================================
+                                 DOCUMENT 1
+                                 ================================= -->
+
+                            <tr>
+
+                                <td class="ps-4">
+
+                                    <div class="d-flex
+                                        align-items-center
+                                        gap-3">
+
+
+                                        <div class="document-type-icon
+                                            document-type-certificate">
+
+                                            <i class="fas fa-certificate"></i>
+
+                                        </div>
+
+
+                                        <span class="document-name">
+                                            Course Certificates - Batch 1
+                                        </span>
+
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    Certificate
+                                </td>
+
+
+                                <td>
+                                    120
+                                </td>
+
+
+                                <td>
+                                    24 Sep 2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status-completed">
+                                        Completed
+                                    </span>
+
+                                </td>
+
+
+                                <td class="text-end pe-4">
+
+                                    <button type="button"
+                                            class="document-action"
+                                            aria-label="Download document">
+
+                                        <i class="fas fa-download"></i>
+
+                                    </button>
+
+
+                                    <button type="button"
+                                            class="document-action ms-1"
+                                            aria-label="More actions">
+
+                                        <i class="fas fa-ellipsis-h"></i>
+
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+
+                            <!-- =================================
+                                 DOCUMENT 2
+                                 ================================= -->
+
+                            <tr>
+
+                                <td class="ps-4">
+
+                                    <div class="d-flex
+                                        align-items-center
+                                        gap-3">
+
+
+                                        <div class="document-type-icon
+                                            document-type-letter">
+
+                                            <i class="far fa-file-alt"></i>
+
+                                        </div>
+
+
+                                        <span class="document-name">
+                                            Employee Experience Letters
+                                        </span>
+
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    Letter
+                                </td>
+
+
+                                <td>
+                                    25
+                                </td>
+
+
+                                <td>
+                                    22 Sep 2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status-completed">
+                                        Completed
+                                    </span>
+
+                                </td>
+
+
+                                <td class="text-end pe-4">
+
+                                    <button type="button"
+                                            class="document-action"
+                                            aria-label="Download document">
+
+                                        <i class="fas fa-download"></i>
+
+                                    </button>
+
+
+                                    <button type="button"
+                                            class="document-action ms-1"
+                                            aria-label="More actions">
+
+                                        <i class="fas fa-ellipsis-h"></i>
+
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+
+                            <!-- =================================
+                                 DOCUMENT 3
+                                 ================================= -->
+
+                            <tr>
+
+                                <td class="ps-4">
+
+                                    <div class="d-flex
+                                        align-items-center
+                                        gap-3">
+
+
+                                        <div class="document-type-icon
+                                            document-type-invoice">
+
+                                            <i class="fas fa-file-invoice"></i>
+
+                                        </div>
+
+
+                                        <span class="document-name">
+                                            Invoices - September
+                                        </span>
+
+
+                                    </div>
+
+                                </td>
+
+
+                                <td>
+                                    Invoice
+                                </td>
+
+
+                                <td>
+                                    48
+                                </td>
+
+
+                                <td>
+                                    20 Sep 2026
+                                </td>
+
+
+                                <td>
+
+                                    <span class="status-completed">
+                                        Completed
+                                    </span>
+
+                                </td>
+
+
+                                <td class="text-end pe-4">
+
+                                    <button type="button"
+                                            class="document-action"
+                                            aria-label="Download document">
+
+                                        <i class="fas fa-download"></i>
+
+                                    </button>
+
+
+                                    <button type="button"
+                                            class="document-action ms-1"
+                                            aria-label="More actions">
+
+                                        <i class="fas fa-ellipsis-h"></i>
+
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+
+                    </table>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+</div>

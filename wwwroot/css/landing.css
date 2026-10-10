@@ -1,0 +1,1541 @@
+﻿/* =========================================================
+   DOCGENIE
+   LOGIN / LANDING PAGE
+   ========================================================= */
+
+
+/* =========================================================
+   VARIABLES
+   ========================================================= */
+
+:root {
+    --blue: #318df5;
+    --blue-light: #72aefb;
+    --blue-dark: #236ed1;
+    --navy: #102a43;
+    --navy-soft: #294a6a;
+    --text-secondary: #607b99;
+    --text-muted: #8aa0b8;
+    --background: #f3f7fc;
+    --border: #d7e2ee;
+    --white: #ffffff;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    color: var(--navy);
+    background: #f3f7fc;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+
+/* =========================================================
+   MAIN BACKGROUND GRADIENT
+   ========================================================= */
+
+.background-gradient {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient( ellipse 75% 58% at 72% 8%, rgba(142, 190, 255, 0.42) 0%, rgba(176, 210, 250, 0.22) 32%, rgba(222, 236, 250, 0.10) 58%, transparent 76% ), linear-gradient( 180deg, #eef5fc 0%, #f4f8fc 42%, #edf3f9 100% );
+}
+
+
+/* =========================================================
+   SOFT BLUE WASH
+   ========================================================= */
+
+.background-blue-wash {
+    position: absolute;
+    width: 850px;
+    height: 550px;
+    left: 5%;
+    top: 12%;
+    background: radial-gradient( ellipse, rgba(185, 215, 249, 0.22), transparent 70% );
+    filter: blur(35px);
+    animation: backgroundWash 15s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   DECORATIVE CIRCLES
+   ========================================================= */
+
+.bg-circle {
+    position: absolute;
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   TOP RIGHT BLUE HALF CIRCLE
+   ========================================================= */
+
+.bg-circle-top {
+    width: 360px;
+    height: 360px;
+    right: -150px;
+    top: -190px;
+    background: radial-gradient( circle at 35% 65%, rgba(103, 164, 248, 0.48), rgba(119, 176, 250, 0.28) 52%, rgba(119, 176, 250, 0.08) 72%, transparent 74% );
+    animation: circleFloatTop 13s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   BOTTOM LEFT BLUE CIRCLE
+   ========================================================= */
+
+.bg-circle-bottom-left {
+    width: 440px;
+    height: 440px;
+    left: -245px;
+    bottom: -245px;
+    background: radial-gradient( circle at 60% 40%, rgba(137, 187, 249, 0.33), rgba(153, 199, 250, 0.17) 58%, rgba(170, 209, 250, 0.04) 75%, transparent 77% );
+    animation: circleFloatLeft 16s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   BOTTOM RIGHT SOFT CIRCLE
+   ========================================================= */
+
+.bg-circle-bottom-right {
+    width: 340px;
+    height: 340px;
+    right: -250px;
+    bottom: -180px;
+    background: radial-gradient( circle, rgba(176, 207, 237, 0.15), transparent 72% );
+}
+
+
+/* =========================================================
+   CURVED ORBITAL LINES
+   ========================================================= */
+
+.orbit {
+    position: absolute;
+    border: 1px solid rgba(123, 157, 194, 0.18);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   LEFT LARGE CURVE
+   ========================================================= */
+
+.orbit-one {
+    width: 920px;
+    height: 920px;
+    left: -720px;
+    top: 135px;
+    transform: rotate(-14deg);
+}
+
+
+/* =========================================================
+   BOTTOM RIGHT CURVE
+   ========================================================= */
+
+.orbit-two {
+    width: 950px;
+    height: 950px;
+    right: -620px;
+    bottom: -560px;
+    transform: rotate(16deg);
+}
+
+
+/* =========================================================
+   UPPER CURVE
+   ========================================================= */
+
+.orbit-three {
+    width: 780px;
+    height: 780px;
+    right: -350px;
+    top: -650px;
+    border-color: rgba(105, 151, 204, 0.22);
+    animation: orbitDrift 18s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   DOTTED GRIDS
+   ========================================================= */
+
+.dot-grid {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(6, 7px);
+    grid-auto-rows: 7px;
+    gap: 14px;
+    width: max-content;
+    opacity: 0.62;
+}
+
+
+    /* =========================================================
+   INDIVIDUAL DOT
+   ========================================================= */
+
+    .dot-grid span {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #a9c6e7;
+        box-shadow: 0 0 6px rgba(120, 174, 236, 0.12);
+        animation: dotPulse 4.5s ease-in-out infinite;
+    }
+
+
+        /* =========================================================
+   DOT ANIMATION DELAYS
+   ========================================================= */
+
+        .dot-grid span:nth-child(2n) {
+            animation-delay: -1.2s;
+        }
+
+
+        .dot-grid span:nth-child(3n) {
+            animation-delay: -2.3s;
+        }
+
+
+        .dot-grid span:nth-child(5n) {
+            animation-delay: -3.1s;
+        }
+
+
+/* =========================================================
+   LEFT DOT GRID
+   ========================================================= */
+
+.dot-grid-left {
+    left: 30px;
+    top: 52%;
+    bottom: auto;
+    animation: gridFloatLeft 10s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   RIGHT DOT GRID
+   ========================================================= */
+
+.dot-grid-right {
+    right: 30px;
+    top: 43%;
+    animation: gridFloatRight 12s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   AMBIENT LIGHTS
+   ========================================================= */
+
+.ambient-light {
+    position: absolute;
+    width: 330px;
+    height: 330px;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.16;
+}
+
+
+/* =========================================================
+   AMBIENT LIGHT ONE
+   ========================================================= */
+
+.ambient-light-one {
+    left: 22%;
+    top: 34%;
+    background: #9bc8ff;
+    animation: ambientOne 12s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   AMBIENT LIGHT TWO
+   ========================================================= */
+
+.ambient-light-two {
+    right: 24%;
+    bottom: 15%;
+    background: #c3ddf7;
+    animation: ambientTwo 14s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.page {
+    position: relative;
+    zoom:0.9;
+    z-index: 2;
+    width: 100%;
+    height: 100vh;
+    padding: 24px clamp(40px, 11vw, 185px) 17px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* =========================================================
+   TOP NAVIGATION
+   ========================================================= */
+
+.top-nav {
+    width: 100%;
+    min-height: 56px;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.92);
+    border-radius: 13px;
+    box-shadow: 0 10px 30px rgba(43, 73, 103, 0.09);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    animation: heartPump 8s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 22px;
+    font-weight: 750;
+    color: #203d5c;
+}
+
+
+.brand-icon {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9px;
+    color: white;
+    background: linear-gradient( 135deg, #369cff, #246fd5 );
+    box-shadow: 0 7px 18px rgba(39, 140, 255, 0.22);
+}
+
+
+    .brand-icon i {
+        font-size: 16px;
+    }
+
+
+/* =========================================================
+   CENTER TITLE
+   ========================================================= */
+
+.portal-title {
+    text-align: center;
+    font-size: 19px;
+    font-weight: 600;
+    color: #3c5872;
+}
+
+
+/* =========================================================
+   RIGHT CONTACT
+   ========================================================= */
+
+.contact {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 9px;
+    color: #58708a;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+    .contact i {
+        color: #318df5;
+        font-size: 16px;
+    }
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.main-content {
+    flex: 1;
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 650px) minmax(420px, 455px);
+    align-items: center;
+    justify-content: center;
+    column-gap: clamp(120px, 11.75vw, 190px);
+}
+
+/* =========================================================
+   HERO SECTION
+   ========================================================= */
+
+.hero-section {
+    max-width: 650px;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.eyebrow {
+    margin-bottom: 11px;
+    font-size: 11px;
+    letter-spacing: 2.2px;
+    font-weight: 700;
+    color: #5e82a8;
+}
+
+
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
+
+.hero-section h1 {
+    margin: 0;
+    font-size: clamp(40px, 3.5vw, 53px);
+    line-height: 1.08;
+    letter-spacing: -1.8px;
+    font-weight: 760;
+    color: #102a43;
+}
+
+
+    .hero-section h1 span {
+        display: block;
+        margin-top: 5px;
+        color: #4a88c9;
+    }
+
+
+/* =========================================================
+   HERO DESCRIPTION
+   ========================================================= */
+
+.hero-description {
+    max-width: 620px;
+    margin: 19px 0 25px;
+    font-size: 14px;
+    line-height: 1.65;
+    color: #607b99;
+}
+
+
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.features {
+    width: 100%;
+    max-width: 650px;
+}
+
+
+/* =========================================================
+   FEATURE
+   ========================================================= */
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(130, 153, 177, 0.17);
+}
+
+
+    .feature:last-child {
+        border-bottom: none;
+    }
+
+
+/* =========================================================
+   FEATURE ICON
+   ========================================================= */
+
+.feature-icon {
+    width: 47px;
+    height: 47px;
+    flex: 0 0 47px;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+
+/* =========================================================
+   FEATURE COLORS
+   ========================================================= */
+
+.icon-blue {
+    color: #2589f7;
+    background: #e5f1ff;
+}
+
+
+.icon-purple {
+    color: #7567e9;
+    background: #eceaff;
+}
+
+
+.icon-green {
+    color: #18ae83;
+    background: #e2f8f1;
+}
+
+
+.icon-orange {
+    color: #f47c31;
+    background: #fff0e7;
+}
+
+
+.icon-pink {
+    color: #c653aa;
+    background: #fae9f6;
+}
+
+
+/* =========================================================
+   FEATURE CONTENT
+   ========================================================= */
+
+.feature-content {
+    flex: 1;
+}
+
+
+    .feature-content h3 {
+        margin: 0 0 2px;
+        font-size: 15px;
+        line-height: 1.3;
+        font-weight: 700;
+        color: #132e49;
+    }
+
+
+    .feature-content p {
+        margin: 0;
+        font-size: 12.5px;
+        line-height: 1.45;
+        color: #607b99;
+    }
+
+
+/* =========================================================
+   LOGIN SECTION
+   ========================================================= */
+
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 45px;
+}
+
+
+/* =========================================================
+   LOGIN CARD
+   ========================================================= */
+
+.login-card {
+    position: relative;
+    width: min(100%, 455px);
+    padding: 5px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.76);
+    border: 1px solid rgba(255, 255, 255, 0.96);
+    box-shadow: 0 28px 80px rgba(40, 70, 100, 0.15);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CARD DECORATIVE GLOW
+   ========================================================= */
+
+.login-card-glow {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    right: -65px;
+    top: -90px;
+    border-radius: 50%;
+    background: rgba(99, 163, 249, 0.17);
+    filter: blur(5px);
+}
+
+
+/* =========================================================
+   LOGIN CONTENT
+   ========================================================= */
+
+.login-content {
+    position: relative;
+    z-index: 2;
+    padding: 36px 40px 31px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.82);
+}
+
+
+/* =========================================================
+   LOGIN HEADING
+   ========================================================= */
+
+.login-heading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+
+.login-icon {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background: linear-gradient( 135deg, #4b9eff, #6d64e9 );
+    box-shadow: 0 9px 23px rgba(72, 135, 235, 0.24);
+}
+
+
+    .login-icon i {
+        font-size: 18px;
+    }
+
+
+.login-heading h2 {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 750;
+    letter-spacing: -0.8px;
+    color: #102a43;
+}
+
+
+/* =========================================================
+   LOGIN LINE
+   ========================================================= */
+
+.login-line {
+    width: 125px;
+    height: 3px;
+    margin: 13px auto 30px;
+    border-radius: 10px;
+    background: linear-gradient( 90deg, #318fff, #6b69e8 );
+}
+
+
+/* =========================================================
+   MODERN FORM LABELS
+   ========================================================= */
+
+.login-content .form-label {
+    margin-bottom: 9px;
+    font-size: 15px;
+    font-weight: 650;
+    color: #162e48;
+}
+
+
+/* =========================================================
+   FORM GROUP SPACING
+   ========================================================= */
+
+.login-content .mb-4 {
+    margin-bottom: 22px !important;
+}
+
+
+/* =========================================================
+   INPUT GROUP
+   ========================================================= */
+
+.login-content .input-group {
+    width: 100%;
+}
+
+
+/* =========================================================
+   INPUT ICON
+   ========================================================= */
+
+.login-content .input-group-text {
+    min-width: 58px;
+    justify-content: center;
+    border: 1px solid #d2deea;
+    border-right: none;
+    border-radius: 11px 0 0 11px;
+    background: #f7fafd;
+    color: #718ba5;
+    font-size: 16px;
+}
+
+
+/* =========================================================
+   TEXT INPUT
+   ========================================================= */
+
+.login-content .form-control {
+    min-height: 56px;
+    border: 1px solid #d2deea;
+    border-left: none;
+    border-radius: 0 11px 11px 0;
+    padding: 0 17px;
+    background: rgba(255, 255, 255, 0.94);
+    color: #203a55;
+    font-size: 17px;
+    font-weight: 400;
+    box-shadow: none;
+}
+
+
+    /* =========================================================
+   INPUT PLACEHOLDER
+   ========================================================= */
+
+    .login-content .form-control::placeholder {
+        color: #9aaec1;
+        font-size: 15px;
+        opacity: 1;
+    }
+
+
+    /* =========================================================
+   INPUT HOVER
+   ========================================================= */
+
+    .login-content .form-control:hover {
+        border-color: #bdccdb;
+    }
+
+
+    /* =========================================================
+   INPUT FOCUS
+   ========================================================= */
+
+    .login-content .form-control:focus {
+        border-color: #55a1ff;
+        background: #ffffff;
+        box-shadow: 0 0 0 0.22rem rgba(49, 141, 245, 0.11);
+    }
+
+
+/* =========================================================
+   FOCUS ICON AREA
+   ========================================================= */
+
+.login-content .input-group:focus-within
+.input-group-text {
+    border-color: #55a1ff;
+    background: #f5faff;
+    color: #398ff4;
+}
+
+
+/* =========================================================
+   PASSWORD TOGGLE
+   ========================================================= */
+
+.login-content .password-toggle {
+    min-width: 58px;
+    border: 1px solid #d2deea;
+    border-left: none;
+    border-radius: 0 11px 11px 0;
+    background: #ffffff;
+    color: #8195aa;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+
+    .login-content .password-toggle:hover {
+        color: #398ff4;
+        background: #f5faff;
+    }
+
+
+/* =========================================================
+   LOGIN BUTTON
+   ========================================================= */
+
+.login-content .login-button {
+    position: relative;
+    min-height: 56px;
+    border: none;
+    border-radius: 11px;
+    padding: 0 22px;
+    font-size: 17px;
+    font-weight: 650;
+    background: linear-gradient( 100deg, #329df7, #4d72e9 );
+    box-shadow: 0 11px 25px rgba(52, 131, 232, 0.24);
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+
+
+    .login-content .login-button i {
+        position: absolute;
+        right: 19px;
+        font-size: 16px;
+    }
+
+
+    .login-content .login-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 15px 30px rgba(52, 131, 232, 0.31);
+    }
+
+
+    .login-content .login-button:active {
+        transform: translateY(0);
+    }
+
+
+/* =========================================================
+   LOGIN OPTIONS
+   ========================================================= */
+
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 17px;
+}
+
+
+/* =========================================================
+   CHECKBOX
+   ========================================================= */
+
+.login-content .form-check {
+    display: flex;
+    align-items: center;
+    min-height: 24px;
+    margin: 0;
+}
+
+
+.login-content .form-check-input {
+    width: 19px;
+    height: 19px;
+    margin: 0 9px 0 0;
+    border: 1px solid #a9bacb;
+    cursor: pointer;
+}
+
+
+    .login-content .form-check-input:checked {
+        background-color: #398ff4;
+        border-color: #398ff4;
+    }
+
+
+    .login-content .form-check-input:focus {
+        border-color: #55a1ff;
+        box-shadow: 0 0 0 0.20rem rgba(49, 141, 245, 0.12);
+    }
+
+
+.login-content .form-check-label {
+    margin: 0;
+    color: #5d7185;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   FORGOT PASSWORD
+   ========================================================= */
+
+.login-options a {
+    color: #237de4;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+    .login-options a:hover {
+        text-decoration: underline;
+    }
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.login-divider {
+    width: 100%;
+    height: 1px;
+    margin: 22px 0 18px;
+    background: #e1e7ee;
+}
+
+
+/* =========================================================
+   REGISTER
+   ========================================================= */
+
+.register-text {
+    text-align: center;
+    color: #6a7e91;
+    font-size: 13px;
+}
+
+
+    .register-text a {
+        color: #247fe7;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+
+        .register-text a:hover {
+            text-decoration: underline;
+        }
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 11px;
+    padding-top: 3px;
+    color: #71869b;
+    font-size: 10.5px;
+}
+
+
+    .footer a {
+        color: #71869b;
+        text-decoration: none;
+    }
+
+
+        .footer a:hover {
+            color: #327fc9;
+        }
+
+
+.footer-separator {
+    width: 1px;
+    height: 11px;
+    background: #c5d0db;
+}
+
+
+/* =========================================================
+   ANIMATION - NAVIGATION
+   ========================================================= */
+
+@keyframes heartPump {
+
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 10px 30px rgba(43, 73, 103, 0.09);
+    }
+
+    35% {
+        transform: scale(1.012);
+        box-shadow: 0 14px 38px rgba(43, 73, 103, 0.12);
+    }
+
+    55% {
+        transform: scale(1.018);
+        box-shadow: 0 17px 43px rgba(43, 73, 103, 0.14);
+    }
+
+    75% {
+        transform: scale(1.008);
+        box-shadow: 0 12px 34px rgba(43, 73, 103, 0.10);
+    }
+}
+
+/* =========================================================
+   ANIMATION - TOP CIRCLE
+   ========================================================= */
+
+@keyframes circleFloatTop {
+
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(-18px, 13px, 0) scale(1.035);
+    }
+}
+
+
+/* =========================================================
+   ANIMATION - BOTTOM LEFT CIRCLE
+   ========================================================= */
+
+@keyframes circleFloatLeft {
+
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(18px, -13px, 0);
+    }
+}
+
+
+/* =========================================================
+   ANIMATION - BACKGROUND WASH
+   ========================================================= */
+
+@keyframes backgroundWash {
+
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate3d(35px, -20px, 0) scale(1.05);
+    }
+}
+
+
+/* =========================================================
+   ANIMATION - ORBIT
+   ========================================================= */
+
+@keyframes orbitDrift {
+
+    0%, 100% {
+        transform: rotate(16deg) translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: rotate(19deg) translate3d(-15px, 12px, 0);
+    }
+}
+
+
+/* =========================================================
+   ANIMATION - LEFT DOT GRID
+   ========================================================= */
+
+@keyframes gridFloatLeft {
+
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate3d(7px, -8px, 0) rotate(-1deg);
+    }
+
+    50% {
+        transform: translate3d(13px, 3px, 0) rotate(1deg);
+    }
+
+    75% {
+        transform: translate3d(5px, 10px, 0) rotate(0deg);
+    }
+}
+
+
+/* =========================================================
+   ANIMATION - RIGHT DOT GRID
+   ========================================================= */
+
+@keyframes gridFloatRight {
+
+    0%, 100% {
+        transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate3d(-8px, 7px, 0) rotate(1deg);
+    }
+
+    50% {
+        transform: translate3d(-15px, -4px, 0) rotate(-1deg);
+    }
+
+    75% {
+        transform: translate3d(-6px, -10px, 0) rotate(0deg);
+    }
+}
+
+
+/* =========================================================
+   ANIMATION - INDIVIDUAL DOTS
+   ========================================================= */
+
+@keyframes dotPulse {
+
+    0%, 100% {
+        opacity: 0.42;
+        transform: scale(0.85);
+    }
+
+    50% {
+        opacity: 0.82;
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================================================
+   ANIMATION - AMBIENT LIGHT ONE
+   ========================================================= */
+
+@keyframes ambientOne {
+
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(45px, -25px, 0);
+    }
+}
+
+
+/* =========================================================
+   ANIMATION - AMBIENT LIGHT TWO
+   ========================================================= */
+
+@keyframes ambientTwo {
+
+    0%, 100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(-40px, 20px, 0);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 1100px
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .page {
+        padding-left: 35px;
+        padding-right: 35px;
+    }
+
+
+    .main-content {
+        grid-template-columns: minmax(0, 1fr) minmax(400px, 430px);
+        column-gap: 75px;
+    }
+
+
+    .hero-section h1 {
+        font-size: 42px;
+    }
+
+
+    .dot-grid-left {
+        left: 15px;
+    }
+
+
+    .dot-grid-right {
+        right: 15px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 850px
+   ========================================================= */
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    body {
+        overflow-y: auto;
+    }
+
+
+    .page {
+        min-height: 100vh;
+        height: auto;
+        padding: 15px 18px 20px;
+    }
+
+
+    /* =====================================================
+       TOP BAR
+       ===================================================== */
+
+    .top-nav {
+        grid-template-columns: 1fr auto;
+        min-height: 54px;
+        padding: 0 16px;
+    }
+
+
+    .portal-title {
+        display: none;
+    }
+
+
+    .brand {
+        font-size: 20px;
+    }
+
+
+    .brand-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+
+    .contact {
+        font-size: 12px;
+    }
+
+
+        .contact span {
+            display: none;
+        }
+
+
+    /* =====================================================
+       HIDE DESKTOP HERO COMPLETELY
+       ===================================================== */
+
+    .hero-section {
+        display: none;
+    }
+
+
+    /* =====================================================
+       MAIN CONTENT
+       ===================================================== */
+
+    .main-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        min-height: calc(100vh - 95px);
+        margin: 0;
+        padding: 25px 0 20px;
+        gap: 0;
+    }
+
+
+    /* =====================================================
+       LOGIN
+       ===================================================== */
+
+    .login-section {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+    .login-card {
+        width: min(100%, 470px);
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    .footer {
+        padding: 8px 0 0;
+        font-size: 10px;
+    }
+
+
+    /* =====================================================
+       DECORATIVE DOTS
+       ===================================================== */
+
+    .dot-grid-left {
+        left: -22px;
+        top: 48%;
+    }
+
+
+    .dot-grid-right {
+        right: -22px;
+        top: 30%;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - 550px
+   ========================================================= */
+
+/* =========================================================
+   RESPONSIVE - SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 550px) {
+
+    .page {
+        padding: 10px 12px 15px;
+    }
+
+
+    /* =====================================================
+       TOP BAR
+       ===================================================== */
+
+    .top-nav {
+        min-height: 52px;
+        padding: 0 13px;
+        border-radius: 11px;
+    }
+
+
+    .brand {
+        font-size: 18px;
+    }
+
+
+    .brand-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+    }
+
+
+    .contact {
+        font-size: 11px;
+    }
+
+
+        .contact i {
+            font-size: 14px;
+        }
+
+
+    /* =====================================================
+       MAIN
+       ===================================================== */
+
+    .main-content {
+        min-height: calc(100vh - 82px);
+        padding: 18px 0 15px;
+    }
+
+
+    /* =====================================================
+       LOGIN CARD
+       ===================================================== */
+
+    .login-card {
+        width: 100%;
+        max-width: 440px;
+        padding: 4px;
+        border-radius: 20px;
+    }
+
+
+    .login-content {
+        padding: 28px 22px 25px;
+        border-radius: 16px;
+    }
+
+
+    /* =====================================================
+       LOGIN HEADER
+       ===================================================== */
+
+    .login-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+
+    .login-heading h2 {
+        font-size: 28px;
+    }
+
+
+    .login-line {
+        margin-bottom: 25px;
+    }
+
+
+    /* =====================================================
+       FORM
+       ===================================================== */
+
+    .login-content .form-label {
+        font-size: 14px;
+    }
+
+
+    .login-content .form-control {
+        min-height: 52px;
+        font-size: 15px;
+    }
+
+
+        .login-content .form-control::placeholder {
+            font-size: 14px;
+        }
+
+
+    .login-content .input-group-text {
+        min-width: 50px;
+    }
+
+
+    .login-content .password-toggle {
+        min-width: 50px;
+    }
+
+
+    .login-content .login-button {
+        min-height: 53px;
+        font-size: 16px;
+    }
+
+
+    /* =====================================================
+       FOOTER
+       ===================================================== */
+
+    .footer {
+        flex-wrap: wrap;
+        gap: 7px;
+    }
+
+
+    /* =====================================================
+       DECORATION
+       ===================================================== */
+
+    .dot-grid {
+        opacity: 0.45;
+        transform: scale(0.72);
+    }
+
+
+    .dot-grid-left {
+        left: -25px;
+        top: 52%;
+    }
+
+
+    .dot-grid-right {
+        right: -25px;
+        top: 27%;
+    }
+
+
+    .bg-circle-top {
+        width: 260px;
+        height: 260px;
+        right: -145px;
+        top: -145px;
+    }
+
+
+    .bg-circle-bottom-left {
+        width: 320px;
+        height: 320px;
+        left: -210px;
+        bottom: -190px;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+

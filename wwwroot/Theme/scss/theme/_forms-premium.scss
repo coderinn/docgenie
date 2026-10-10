@@ -1,0 +1,236 @@
+/*
+* ==========================================================
+*     NoUI Slider
+* ==========================================================
+*/
+
+.nouislider {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.noUi-target {
+    border: 1px solid $gray-300;
+    border-radius: 0;
+    background: $body-bg;
+    box-shadow: none;
+}
+
+.noUi-handle {
+    border: none;
+    border-radius: 0;
+    background: $gray-300;
+    box-shadow: none;
+
+    &:focus {
+        outline: none;
+    }
+
+    &:before,
+    &:after {
+        background: $gray-500;
+    }
+}
+
+.noUi-tooltip {
+    color: $body-color;
+    border-color: transparent;
+    border-radius: 0;
+    background: $gray-100;
+    font-size: .85rem;
+    font-weight: bold;
+}
+
+.noUi-connect {
+    background: $primary;
+}
+
+
+/*
+*
+* ==========================================
+* 3rd PARTIES CUSTOM STYLING - [DATEPICKER]
+* ==========================================
+*
+*/
+
+.datepicker-picker {
+    font-family: $font-family-sans-serif !important;
+}
+
+.datepicker-dropdown {
+    z-index: 999 !important;
+}
+
+.datepicker-controls .button {
+    padding: 0.5rem !important;
+    border: none !important;
+    background: $light !important;
+    font-weight: $font-weight-bold !important;
+}
+
+.datepicker-cell {
+    border-radius: 0 !important;
+    font-size: 0.9rem;
+}
+
+.datepicker-main {
+    padding: 1rem !important;
+}
+
+.datepicker-cell.selected,
+.datepicker-cell.selected:hover {
+    background: $primary !important;
+    font-weight: $font-weight-normal;
+}
+
+.datepicker-cell.selected,
+.datepicker-cell.selected:hover {
+    background: $primary !important;
+    font-weight: $font-weight-normal;
+}
+
+
+
+/*
+*
+* ==========================================
+* Multi.js - MultiSelect
+* ==========================================
+*
+*/
+.multi-wrapper {
+    border-color: $input-border-color;
+    border-radius: 0;
+}
+
+.multi-wrapper .item {
+    color: $dropdown-link-color;
+    font-size: 0.9rem;
+    font-weight: $font-weight-normal;
+
+    &:hover {
+        color: $white;
+        background: $primary;
+    }
+}
+
+.non-selected-wrapper .item {
+    &.selected {
+        display: none;
+    }
+}
+
+
+/*
+*
+* ==========================================
+* Multi.js - MultiSelect
+* ==========================================
+*
+*/
+.choices__inner {
+    transition: all 0.3s;
+}
+
+.choices__input {
+    margin: 2px;
+    background: none;
+}
+
+.choices__list--multiple .choices__item {
+    margin: 2px;
+    border-color: $primary;
+    background: $primary;
+}
+
+.choices[data-type*=select-multiple] .choices__button,
+.choices[data-type*=text] .choices__button {
+    border-left: 1px solid lighten($primary, 10%);
+}
+
+
+
+
+/*
+*
+* ==========================================
+* Autocomplete.js
+* ==========================================
+*
+*/
+.autoComplete_wrapper {
+    width: 100%;
+
+    ul {
+        margin: 2px 0 0 0;
+        border-radius: 0;
+
+        li {
+            border-radius: 0;
+        }
+    }
+}
+
+.autoComplete_wrapper>ul>li mark {
+    padding: 0 !important;
+    color: $dark !important;
+}
+
+.autoComplete_wrapper>input {
+    width: 100%;
+    padding: $input-btn-padding-y $input-btn-padding-x;
+    padding-left: $input-btn-padding-x;
+    border-color: $input-border-color;
+    border-radius: $input-border-radius;
+}
+
+
+/*
+*
+* ==========================================
+* Quill - Text Editor
+* ==========================================
+*
+*/
+.ql-editor {
+    min-height: 15rem;
+}
+
+.ql-snow.ql-toolbar button,
+.ql-snow .ql-toolbar button {
+    background: none;
+}
+
+.ql-toolbar.ql-snow {
+    padding: 1rem;
+    border-color: $gray-200;
+    border-bottom: none;
+    border-radius: 0;
+    background: #fafafa;
+}
+
+.ql-container.ql-snow {
+    border-color: $gray-200;
+    border-radius: 0;
+}
+
+
+
+/*
+*
+* ==========================================
+* Just Validate - Form Validator
+* ==========================================
+*
+*/
+.js-validate-error-field {
+    color: $danger !important;
+    border-color: $danger !important;
+}
+
+.js-validate-error-label {
+    margin-top: $form-text-margin-top !important;
+    color: $danger !important;
+    font-size: $form-text-font-size !important;
+}

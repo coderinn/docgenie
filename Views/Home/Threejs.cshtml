@@ -1,0 +1,361 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management Portal</title>
+    <!-- FontAwesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Top-left logo and text */
+        .logo-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            color: #6a1b9a; /* Purple color */
+            z-index: 2;
+        }
+
+            .logo-container img {
+                width: 40px; /* Adjust the logo size */
+                height: 40px;
+                margin-right: 10px;
+            }
+
+            .logo-container span {
+                font-weight: bold;
+                font-size: 2rem;
+            }
+
+        /* Half-cut oval at the top-left */
+        .half-oval {
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 370px;
+            height: 200px;
+            background: transparent; /* Make the background transparent */
+            border-radius: 0 0 200px 200px;
+            z-index: 1;
+            box-shadow: 0 1px 12px rgba(138, 43, 226, 0.6); /* Add a purple border shadow */
+        }
+
+
+        .left-section {
+            width: 70%;
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #ffffff;
+            color: #333;
+        }
+
+            .left-section h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+                color: #6a1b9a; /* Purple color */
+                animation: fadeIn 1s ease-out;
+            }
+
+            .left-section ul {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+                .left-section ul li {
+                    margin-bottom: 20px;
+                    opacity: 0;
+                    animation: slideIn 1s forwards;
+                }
+
+                    .left-section ul li .module-container {
+                        display: flex; /* Align bullet and module name horizontally */
+                        align-items: center; /* Align bullet and text vertically */
+                    }
+
+                    .left-section ul li .bullet {
+                        width: 15px;
+                        height: 15px;
+                        background-color: #6a1b9a; /* Purple color */
+                        border-radius: 50%;
+                        margin-right: 10px; /* Spacing between bullet and module name */
+                    }
+
+                    .left-section ul li strong {
+                        font-size: 1.2rem;
+                        color: #222;
+                        display: inline-block;
+                        animation: fadeInText 1s ease-out;
+                    }
+
+                    .left-section ul li p {
+                        margin: 0;
+                        color: gray;
+                        font-size: 0.95rem;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        display: inline-block;
+                        width: 0; /* Initially width is 0 to hide the text */
+                        animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite;
+                        margin-left: 25px; /* Space between module name and description */
+                        animation-iteration-count: infinite; /* Make typing animation repeat forever */
+                    }
+
+        /* Right Section */
+        .right-section {
+            position: relative;
+            width: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50% 0 0 50%;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .login-panel {
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            transform: translateX(-100%) translateY(-50%);
+            width: 90%;
+            max-width: 350px;
+            background: transparent;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+            padding-right: 80px; /* Increased padding to the right */
+            box-sizing: border-box; /* Include padding and border in element width */
+        }
+
+            .login-panel h2 {
+                color: #6a1b9a;
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+                animation: fadeInText 1s ease-out;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+                .login-panel h2 i {
+                    margin-right: 10px; /* Space between icon and text */
+                    font-size: 1.5rem;
+                    color: #6a1b9a; /* Set icon color to purple */
+                }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+            .form-group input,
+            .form-group button {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #6a1b9a; /* Purple border */
+                border-radius: 8px;
+                font-size: 1rem;
+                margin-top: 5px;
+                background-color: rgba(255, 255, 255, 0.7);
+                backdrop-filter: blur(5px);
+                transition: border 0.3s ease;
+            }
+
+                .form-group input:focus,
+                .form-group button:focus {
+                    border-color: #9c27b0; /* Darker purple on focus */
+                }
+
+            .form-group button {
+                background: linear-gradient(135deg, #2ba5f5, #6a1b9a); /* Purple Gradient */
+                color: white;
+                cursor: pointer;
+                transition: background 0.3s ease;
+                margin-top: 15px; /* Add margin to the button for spacing */
+            }
+
+                .form-group button:hover {
+                    background-color: #8e24aa; /* Darker Purple on Hover */
+                }
+
+        /* Animations */
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @@keyframes slideIn {
+            0% {
+                transform: translateX(20px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @@keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @@keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @@keyframes fadeInOut {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @@keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @@keyframes blink {
+            50% {
+                border-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Half-cut oval -->
+    <div class="half-oval"></div>
+
+    <!-- Logo in the top-left corner -->
+    <div class="logo-container">
+        <img src="https://via.placeholder.com/40" alt="Logo"> <!-- Replace with your logo -->
+        <span style="color:black">EAswaq</span>
+    </div>
+
+    <div class="left-section">
+        <h1 style="padding-bottom:30px;">School Management Portal</h1>
+        <ul>
+            <li>
+                <div class="module-container">
+                    <i class="fas fa-user-graduate" style="color: #8E44AD; margin-right: 10px;"></i>
+                    <strong>Student Management</strong>
+                </div>
+                <p>
+                    Manage student records with ease, including personal details, attendance, grades, and performance.
+                </p>
+            </li>
+            <li>
+                <div class="module-container">
+                    <i class="fas fa-chalkboard-teacher" style="color: #8E44AD; margin-right: 10px;"></i>
+                    <strong>Staff Management</strong>
+                </div>
+                <p>
+                    Maintain detailed staff profiles, track payroll, and evaluate performance.Enhance staff communication.
+                </p>
+            </li>
+            <li>
+                <div class="module-container">
+                    <i class="fas fa-calendar-alt" style="color: #8E44AD; margin-right: 10px;"></i>
+                    <strong>Classroom Scheduling</strong>
+                </div>
+                <p>
+                    Create organized timetables, manage class schedules, and avoid clashes.Smooth coordination.
+                </p>
+            </li>
+            <li>
+                <div class="module-container">
+                    <i class="fas fa-users" style="color: #8E44AD; margin-right: 10px;"></i>
+                    <strong>Parent Portal</strong>
+                </div>
+                <p>
+                    Provide parents with real-time updates on attendance, grades, and events..
+                </p>
+            </li>
+            <li>
+                <div class="module-container">
+                    <i class="fas fa-money-bill-wave" style="color: #8E44AD; margin-right: 10px;"></i>
+                    <strong>Fee Management</strong>
+                </div>
+                <p>
+                    Automate fee collection, send timely reminders, and Simplify financial tracking with detailed reports.
+                </p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="right-section"></div>
+
+    <div class="login-panel">
+        <h2 style="color:gray"><i class="fas fa-user"></i>Admin Login</h2>
+         <form method="post" asp-action="LeadSelection">
+        <div class="form-group">
+            <input type="text" placeholder="School Name">
+        </div>
+        <div class="form-group">
+            <input type="email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <input type="password" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <button type="submit">Login</button>
+        </div>
+        </form>
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            <p style="color:red">@ViewBag.ErrorMessage</p>
+        }
+    </div>
+</body>
+</html>

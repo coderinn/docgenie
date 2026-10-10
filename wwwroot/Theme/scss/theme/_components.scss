@@ -1,0 +1,135 @@
+/*
+* ==========================================================
+*     FULL CALENDAR
+* ==========================================================
+*/
+.fc td,
+.fc th {
+    border: 1px solid $gray-200;
+}
+
+.fc .fc-view-harness {
+    border: 1px solid $gray-200;
+}
+
+.fc-toolbar .btn {
+    font-size: 0.9rem !important;
+}
+
+.fc .fc-list-event-dot,
+.fc-daygrid-event-dot {
+    border-color: $primary;
+}
+
+.fc-h-event {
+    border-color: $primary;
+    background-color: $primary;
+}
+
+
+/*
+* ==========================================================
+*     PRELOADERS
+* ==========================================================
+*/
+
+.spinner-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transition: all 0.4s;
+    background-color: $white;
+    z-index: 999999;
+}
+
+.spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px !important;
+    margin-left: -20px !important;
+}
+
+
+/*
+* ==========================================================
+*     GOOGLE MAPS
+* ==========================================================
+*/
+
+.map {
+    width: 100%;
+}
+
+.info-window {
+    padding: 0;
+}
+
+.infobox {
+    display: block;
+    box-sizing: border-box;
+    width: 800px;
+    background: #fff;
+    font-family: $font-family-sans-serif;
+
+    @include media-breakpoint-down(lg) {
+        max-width: 600px;
+    }
+
+    @include media-breakpoint-down(md) {
+        max-width: 350px;
+    }
+
+    .about {
+        color: $gray-600;
+        font-size: $font-size-sm;
+    }
+
+    .details {
+        font-size: $font-size-sm;
+    }
+
+    .address {
+        font-size: $font-size-sm;
+    }
+
+    i.fa {
+        margin-right: 5px;
+    }
+
+    .text {
+        display: table-cell;
+        width: 450px;
+        padding: 40px 20px 20px 40px;
+        vertical-align: top;
+    }
+
+    h3 {
+        margin-top: 0;
+
+        a {
+            color: $gray-700;
+
+            &:hover,
+            &:focus {
+                color: $primary;
+            }
+        }
+    }
+
+    .image {
+        display: table-cell;
+        position: relative;
+        width: 350px;
+        height: 100%;
+        background-position-x: center;
+        background-position-y: center;
+        background-size: cover;
+
+        @include media-breakpoint-down(md) {
+            display: none;
+        }
+    }
+}

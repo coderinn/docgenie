@@ -11,7 +11,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using MySQL.EntityFrameworkCore.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 

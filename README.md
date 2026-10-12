@@ -21,7 +21,7 @@ Restore the pinned local EF tool, then add and apply a migration:
 ```powershell
 dotnet tool restore
 $env:ConnectionStrings__DefaultConnection = "Server=localhost;Port=3306;Database=DocGenie;User ID=docgenie;Password=<local-password>;"
-dotnet ef migrations add InitialMultiTenantSchema --context DocGenieDbContext
+dotnet ef migrations add InitialMySqlSchema --context DocGenieDbContext
 dotnet ef database update --context DocGenieDbContext
 ```
 

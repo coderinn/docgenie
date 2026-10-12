@@ -1,11 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using NuGet.Protocol.Core.Types;
-using LeadsPortal.Classes.Base;
-
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LeadsPortal.Controllers
 {
+    [Authorize(AuthenticationSchemes = "Identity.Application")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

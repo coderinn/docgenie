@@ -15,14 +15,9 @@ using Microsoft.IdentityModel.Tokens;
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-if (string.IsNullOrWhiteSpace(connectionString) && builder.Environment.IsDevelopment())
-{
-    connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=DocGenie;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True";
-}
-
 if (string.IsNullOrWhiteSpace(connectionString))
 {
-    throw new InvalidOperationException("Configure ConnectionStrings:DefaultConnection before starting DocGenie.");
+    throw new InvalidOperationException("Configure ConnectionStrings:DefaultConnection with a MySQL connection string before starting DocGenie.");
 }
 
 var jwtSigningKey = builder.Configuration["Authentication:Jwt:SigningKey"];
@@ -49,7 +44,7 @@ builder.Services.Configure<JwtOptions>(options =>
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
-builder.Services.AddDbContext<DocGenieDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<DocGenieDbContext>(options => options.UseMySQL(connectionString));
 builder.Services.AddScoped<IOrganizationContext, OrganizationContext>();
 builder.Services.AddHttpContextAccessor();
 

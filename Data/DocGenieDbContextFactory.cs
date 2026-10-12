@@ -10,11 +10,15 @@ public sealed class DocGenieDbContextFactory : IDesignTimeDbContextFactory<DocGe
 {
     public DocGenieDbContext CreateDbContext(string[] args)
     {
-        var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection")
-            ?? "Server=(localdb)\\MSSQLLocalDB;Database=DocGenie;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True";
+        var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
+        if (string.IsNullOrWhiteSpace(connectionString))
+        {
+            throw new InvalidOperationException(
+                "Set ConnectionStrings__DefaultConnection to a MySQL connection string before running EF Core tooling.");
+        }
 
         var options = new DbContextOptionsBuilder<DocGenieDbContext>()
-            .UseSqlServer(connectionString)
+            .UseMySQL(connectionString)
             .Options;
 
         return new DocGenieDbContext(options, new OrganizationContext());

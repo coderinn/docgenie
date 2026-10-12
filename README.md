@@ -1,17 +1,18 @@
 # DocGenie
 
-DocGenie is an ASP.NET Core MVC application with a SQL Server-backed, multi-tenant document-generation API. The repository currently targets .NET 10, so the EF Core and Identity packages are aligned to .NET 10.
+DocGenie is an ASP.NET Core MVC application with a MySQL-backed, multi-tenant document-generation API. The repository currently targets .NET 10, so the EF Core, Identity, and MySQL provider packages are aligned to .NET 10. Use MySQL 8.0.16 or later so the schema's check constraints are enforced.
 
 ## Local configuration
 
-The development configuration uses SQL Server LocalDB. Set a JWT signing key in user-secrets or the environment before starting the app. The key must contain at least 32 UTF-8 bytes.
+Set a MySQL connection string and a JWT signing key in user-secrets or the environment before starting the app. The key must contain at least 32 UTF-8 bytes. For a local MySQL account, configure the connection string with your own username and password:
 
 ```powershell
+dotnet user-secrets set "ConnectionStrings:DefaultConnection" "Server=localhost;Port=3306;Database=DocGenie;User ID=docgenie;Password=<local-password>;"
 dotnet user-secrets set "Authentication:Jwt:SigningKey" "<generate-a-random-secret-of-at-least-32-bytes>"
 dotnet run
 ```
 
-For another SQL Server instance, set `ConnectionStrings:DefaultConnection` in user-secrets or the environment. Do not put database passwords or signing keys in tracked JSON files.
+Do not put database passwords or signing keys in tracked JSON files.
 
 ## EF Core migrations
 
@@ -19,12 +20,12 @@ Restore the pinned local EF tool, then add and apply a migration:
 
 ```powershell
 dotnet tool restore
-$env:ConnectionStrings__DefaultConnection = "Server=(localdb)\MSSQLLocalDB;Database=DocGenie;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True"
+$env:ConnectionStrings__DefaultConnection = "Server=localhost;Port=3306;Database=DocGenie;User ID=docgenie;Password=<local-password>;"
 dotnet ef migrations add InitialMultiTenantSchema --context DocGenieDbContext
 dotnet ef database update --context DocGenieDbContext
 ```
 
-`DocGenieDbContextFactory` makes EF tooling independent of the HTTP host and JWT configuration. In deployed environments, use a managed secret store for the database connection string and JWT signing key.
+`DocGenieDbContextFactory` makes EF tooling independent of the HTTP host and JWT configuration; the configured connection string is required by the MySQL provider. This migration creates the schema in MySQL. In deployed environments, use a managed secret store for the database connection string and JWT signing key.
 
 ## Authentication and tenant APIs
 

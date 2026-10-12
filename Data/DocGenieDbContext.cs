@@ -2,6 +2,7 @@ using LeadsPortal.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LeadsPortal.Data;
 
@@ -10,6 +11,10 @@ public sealed class DocGenieDbContext(
     IOrganizationContext organizationContext)
     : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>(options)
 {
+    private static readonly ValueConverter<DateTimeOffset, DateTime> UtcDateTimeOffsetConverter = new(
+        value => value.UtcDateTime,
+        value => new DateTimeOffset(DateTime.SpecifyKind(value, DateTimeKind.Utc)));
+
     private readonly IOrganizationContext _organizationContext = organizationContext;
 
     public DbSet<Organization> Organizations => Set<Organization>();
@@ -29,8 +34,7 @@ public sealed class DocGenieDbContext(
         {
             entity.Property(user => user.FirstName).HasMaxLength(100).IsRequired();
             entity.Property(user => user.LastName).HasMaxLength(100).IsRequired();
-            entity.Property(user => user.CreatedAt).HasColumnType("datetimeoffset");
-            entity.HasIndex(user => user.NormalizedEmail).IsUnique().HasFilter("[NormalizedEmail] IS NOT NULL");
+            entity.HasIndex(user => user.NormalizedEmail).IsUnique();
         });
 
         modelBuilder.Entity<Organization>(entity =>
@@ -39,7 +43,6 @@ public sealed class DocGenieDbContext(
             entity.HasKey(organization => organization.Id);
             entity.Property(organization => organization.Name).HasMaxLength(200).IsRequired();
             entity.Property(organization => organization.Slug).HasMaxLength(120).IsRequired();
-            entity.Property(organization => organization.CreatedAt).HasColumnType("datetimeoffset");
             entity.HasIndex(organization => organization.Slug).IsUnique();
             entity.HasQueryFilter(organization =>
                 _organizationContext.OrganizationId != Guid.Empty
@@ -49,10 +52,9 @@ public sealed class DocGenieDbContext(
         modelBuilder.Entity<OrganizationMember>(entity =>
         {
             entity.ToTable("OrganizationMembers", table =>
-                table.HasCheckConstraint("CK_OrganizationMembers_Role", "[Role] IN ('Owner', 'Admin', 'Member', 'Viewer')"));
+                table.HasCheckConstraint("CK_OrganizationMembers_Role", "`Role` IN ('Owner', 'Admin', 'Member', 'Viewer')"));
             entity.HasKey(member => new { member.OrganizationId, member.UserId });
             entity.Property(member => member.Role).HasConversion<string>().HasMaxLength(20).IsRequired();
-            entity.Property(member => member.JoinedAt).HasColumnType("datetimeoffset");
             entity.HasIndex(member => member.UserId);
             entity.HasQueryFilter(member =>
                 _organizationContext.OrganizationId != Guid.Empty
@@ -70,14 +72,11 @@ public sealed class DocGenieDbContext(
         modelBuilder.Entity<OrganizationInvitation>(entity =>
         {
             entity.ToTable("OrganizationInvitations", table =>
-                table.HasCheckConstraint("CK_OrganizationInvitations_Role", "[Role] IN ('Owner', 'Admin', 'Member', 'Viewer')"));
+                table.HasCheckConstraint("CK_OrganizationInvitations_Role", "`Role` IN ('Owner', 'Admin', 'Member', 'Viewer')"));
             entity.HasKey(invitation => invitation.Id);
             entity.Property(invitation => invitation.Email).HasMaxLength(256).IsRequired();
             entity.Property(invitation => invitation.Role).HasConversion<string>().HasMaxLength(20).IsRequired();
             entity.Property(invitation => invitation.TokenHash).HasMaxLength(64).IsRequired();
-            entity.Property(invitation => invitation.CreatedAt).HasColumnType("datetimeoffset");
-            entity.Property(invitation => invitation.ExpiresAt).HasColumnType("datetimeoffset");
-            entity.Property(invitation => invitation.AcceptedAt).HasColumnType("datetimeoffset");
             entity.HasIndex(invitation => new { invitation.OrganizationId, invitation.Email });
             entity.HasQueryFilter(invitation =>
                 _organizationContext.OrganizationId != Guid.Empty
@@ -95,13 +94,12 @@ public sealed class DocGenieDbContext(
         modelBuilder.Entity<Template>(entity =>
         {
             entity.ToTable("Templates", table =>
-                table.HasCheckConstraint("CK_Templates_FileType", "[FileType] IN ('PDF', 'DOCX')"));
+                table.HasCheckConstraint("CK_Templates_FileType", "`FileType` IN ('PDF', 'DOCX')"));
             entity.HasKey(template => template.Id);
             entity.Property(template => template.Name).HasMaxLength(200).IsRequired();
             entity.Property(template => template.Description).HasMaxLength(2000);
             entity.Property(template => template.StoragePath).HasMaxLength(1024).IsRequired();
             entity.Property(template => template.FileType).HasConversion<string>().HasMaxLength(10).IsRequired();
-            entity.Property(template => template.CreatedAt).HasColumnType("datetimeoffset");
             entity.HasIndex(template => new { template.OrganizationId, template.Name }).IsUnique();
             entity.HasAlternateKey(template => new { template.Id, template.OrganizationId });
             entity.HasQueryFilter(template =>
@@ -122,8 +120,7 @@ public sealed class DocGenieDbContext(
             entity.ToTable("TemplateVersions");
             entity.HasKey(version => version.Id);
             entity.Property(version => version.FilePath).HasMaxLength(1024).IsRequired();
-            entity.Property(version => version.SchemaMappingJson).HasColumnType("nvarchar(max)").IsRequired();
-            entity.Property(version => version.CreatedAt).HasColumnType("datetimeoffset");
+            entity.Property(version => version.SchemaMappingJson).HasColumnType("longtext").IsRequired();
             entity.HasIndex(version => new { version.TemplateId, version.VersionNumber }).IsUnique();
             entity.HasAlternateKey(version => new { version.Id, version.OrganizationId });
             entity.HasQueryFilter(version =>
@@ -140,13 +137,11 @@ public sealed class DocGenieDbContext(
         {
             entity.ToTable("GenerationJobs", table =>
             {
-                table.HasCheckConstraint("CK_GenerationJobs_Status", "[Status] IN ('Pending', 'Processing', 'Completed', 'Failed', 'PartiallyFailed')");
-                table.HasCheckConstraint("CK_GenerationJobs_RowCounts", "[TotalRows] >= 0 AND [SuccessCount] >= 0 AND [FailedCount] >= 0 AND [SuccessCount] + [FailedCount] <= [TotalRows]");
+                table.HasCheckConstraint("CK_GenerationJobs_Status", "`Status` IN ('Pending', 'Processing', 'Completed', 'Failed', 'PartiallyFailed')");
+                table.HasCheckConstraint("CK_GenerationJobs_RowCounts", "`TotalRows` >= 0 AND `SuccessCount` >= 0 AND `FailedCount` >= 0 AND `SuccessCount` + `FailedCount` <= `TotalRows`");
             });
             entity.HasKey(job => job.Id);
             entity.Property(job => job.Status).HasConversion<string>().HasMaxLength(24).IsRequired();
-            entity.Property(job => job.CreatedAt).HasColumnType("datetimeoffset");
-            entity.Property(job => job.CompletedAt).HasColumnType("datetimeoffset");
             entity.HasIndex(job => new { job.OrganizationId, job.CreatedAt });
             entity.HasQueryFilter(job =>
                 _organizationContext.OrganizationId != Guid.Empty
@@ -170,17 +165,17 @@ public sealed class DocGenieDbContext(
         {
             entity.ToTable("JobRows", table =>
             {
-                table.HasCheckConstraint("CK_JobRows_Status", "[Status] IN ('Pending', 'Success', 'Failed')");
-                table.HasCheckConstraint("CK_JobRows_RowNumber", "[RowNumber] > 0");
+                table.HasCheckConstraint("CK_JobRows_Status", "`Status` IN ('Pending', 'Success', 'Failed')");
+                table.HasCheckConstraint("CK_JobRows_RowNumber", "`RowNumber` > 0");
             });
             entity.HasKey(row => row.Id);
-            entity.Property(row => row.InputDataJson).HasColumnType("nvarchar(max)").IsRequired();
+            entity.Property(row => row.InputDataJson).HasColumnType("longtext").IsRequired();
             entity.Property(row => row.Status).HasConversion<string>().HasMaxLength(16).IsRequired();
             entity.Property(row => row.ErrorMessage).HasMaxLength(4000);
             entity.Property(row => row.OutputFilePath).HasMaxLength(1024);
             entity.Property(row => row.VerificationCode).HasMaxLength(100);
             entity.HasIndex(row => new { row.JobId, row.RowNumber }).IsUnique();
-            entity.HasIndex(row => row.VerificationCode).IsUnique().HasFilter("[VerificationCode] IS NOT NULL");
+            entity.HasIndex(row => row.VerificationCode).IsUnique();
             entity.HasQueryFilter(row =>
                 _organizationContext.OrganizationId != Guid.Empty
                 && row.Job.OrganizationId == _organizationContext.OrganizationId);
@@ -197,8 +192,7 @@ public sealed class DocGenieDbContext(
             entity.Property(log => log.Action).HasMaxLength(100).IsRequired();
             entity.Property(log => log.EntityName).HasMaxLength(200).IsRequired();
             entity.Property(log => log.EntityId).HasMaxLength(200).IsRequired();
-            entity.Property(log => log.Timestamp).HasColumnType("datetimeoffset");
-            entity.Property(log => log.DetailsJson).HasColumnType("nvarchar(max)");
+            entity.Property(log => log.DetailsJson).HasColumnType("longtext");
             entity.HasIndex(log => new { log.OrganizationId, log.Timestamp });
             entity.HasQueryFilter(log =>
                 _organizationContext.OrganizationId != Guid.Empty
@@ -212,5 +206,15 @@ public sealed class DocGenieDbContext(
                 .HasForeignKey(log => log.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
         });
+
+        // MySQL has no datetimeoffset column type. Store the instant in UTC and
+        // restore the UTC offset when EF materializes DateTimeOffset properties.
+        foreach (var property in modelBuilder.Model.GetEntityTypes()
+                     .SelectMany(entityType => entityType.GetProperties())
+                     .Where(property => (Nullable.GetUnderlyingType(property.ClrType) ?? property.ClrType) == typeof(DateTimeOffset)))
+        {
+            property.SetValueConverter(UtcDateTimeOffsetConverter);
+            property.SetColumnType("datetime(6)");
+        }
     }
 }

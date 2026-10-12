@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
+using MySQL.EntityFrameworkCore.Extensions;
 
 namespace LeadsPortal.Data;
 
